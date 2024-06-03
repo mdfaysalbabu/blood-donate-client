@@ -36,25 +36,29 @@ const HeroSection = () => {
             lives and ignite hope. Together, we can make a difference that lasts
             a lifetime.
           </p>
-          <div className="join flex flex-col md:flex-row md:items-center">
-            <div className="mb-2 md:mb-0 md:mr-2">
-              <input className="input input-bordered" placeholder="Search" />
+          <div className="join flex flex-col md:flex-row md:items-center mb-6">
+            <div className="mb-2 md:mb-0">
+              <input
+                className="input input-bordered join-item"
+                placeholder="Search"
+              />
             </div>
-            <div className="mb-2 md:mb-0 md:mr-2">
+            <div className="mb-2 md:mb-0">
               <label htmlFor="genre" className="sr-only">
                 Select Genre
               </label>
-              <select id="genre" className="select select-bordered">
+              <select id="genre" className="select select-bordered join-item">
                 <option disabled selected>
                   Filter
                 </option>
+
                 <option>Blood Type</option>
                 <option>Location</option>
                 <option>Availability</option>
               </select>
             </div>
             <div>
-              <button className="btn bg-red-700 text-white font-bold">
+              <button className="btn bg-red-700 text-white font-bold join-item">
                 Search
               </button>
             </div>

@@ -8,8 +8,8 @@ const Footer = () => {
         <Image
           src={AppLogo}
           alt="Logo"
-          height={80}
-          width={80}
+          height={50}
+          width={50}
           className="bg-pink-100 rounded-full"
         />
         <p className="font-bold">

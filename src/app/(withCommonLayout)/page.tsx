@@ -1,5 +1,6 @@
 import AboutUs from "@/components/UI/HomePage/AboutUs/AboutUs";
 import HeroSection from "@/components/UI/HomePage/HeroSection/HeroSection";
+import SearchDonar from "@/components/UI/HomePage/SearchDonar/SearchDonar";
 import TeamInformation from "@/components/UI/HomePage/TeamInformation/TeamInformation";
 
 const HomePage = () => {
@@ -8,6 +9,7 @@ const HomePage = () => {
       <HeroSection></HeroSection>
       <AboutUs></AboutUs>
       <TeamInformation></TeamInformation>
+      <SearchDonar></SearchDonar>
     </>
   );
 };
