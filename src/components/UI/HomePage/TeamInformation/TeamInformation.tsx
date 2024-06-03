@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 
 import bgImage from "@/assets/BloodDrop.png";
