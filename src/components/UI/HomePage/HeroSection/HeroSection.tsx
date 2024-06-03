@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import bgImg from "@/assets/bg.jpg";
 import HeroImage from "@/assets/HeroImage.png";
 import Image from "next/image";
@@ -25,12 +26,15 @@ const HeroSection = () => {
           <h1 className="text-xl md:text-2xl lg:text-3xl font-semibold text-gray-700">
             Life is in Your Veins: Share It! Be The Lifeline!
           </h1>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold my-3 text-accent">
-            Donate <span className="text-red-600">Blood</span>, Save Lives!
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold my-3 text-red-600">
+            Donate Blood, Save Lives!
           </h1>
           <p className="pb-6">
-            Fuel Hope, Save Lives: Your blood donation is a lifeline. Join this
-            lifesaving mission and spark hope in someones darkest hour!
+            Every drop counts in the journey of hope. Be the beacon of light for
+            someone in their darkest hour. Your blood donation is not just a
+            gesture; it's a lifeline. Join us in this noble mission to save
+            lives and ignite hope. Together, we can make a difference that lasts
+            a lifetime.
           </p>
           <div className="join flex flex-col md:flex-row md:items-center">
             <div className="mb-2 md:mb-0 md:mr-2">
@@ -50,7 +54,7 @@ const HeroSection = () => {
               </select>
             </div>
             <div>
-              <button className="btn bg-red-600 text-white font-bold">
+              <button className="btn bg-red-700 text-white font-bold">
                 Search
               </button>
             </div>
