@@ -10,7 +10,7 @@
 
 ---
 
-[https://github.com/Porgramming-Hero-web-course/l2-b2-fullstack-track-assignment-8-Upoma218](https://github.com/Porgramming-Hero-web-course/l2-b2-fullstack-track-assignment-8-Upoma218)
+[https://github.com/Upoma218/blood-donation-app-server](https://github.com/Upoma218/blood-donation-app-server)
 
 ---
 
@@ -24,7 +24,7 @@
 
 ---
 
-[https://github.com/Porgramming-Hero-web-course/l2-b2-fullstack-track-assignment-8-Upoma218](https://github.com/Porgramming-Hero-web-course/l2-b2-fullstack-track-assignment-8-Upoma218)
+[https://github.com/Upoma218/blood-donation-app-client](https://github.com/Upoma218/blood-donation-app-client)
 
 ---
 
