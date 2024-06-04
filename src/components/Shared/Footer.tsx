@@ -18,82 +18,84 @@ const Footer = () => {
         <Image
           src={AppLogo}
           alt="Logo"
-          height={100}
-          width={100}
+          height={50}
+          width={50}
           className="bg-pink-100 rounded-full"
         />
         <p className="font-bold text-2xl text-yellow-400">Donate Blood</p>
-        <ul className="list-inside list-disc">
-          <li>Bridge the gap between donors and recipients.</li>
-          <li>Provide lifesaving education and awareness.</li>
-          <li>Facilitate the donation process.</li>
-          <li>Create a positive impact on lives.</li>
-          <li>Foster a culture of giving and compassion.</li>
-          <li>
-            Extend our reach to communities worldwide. Recognize and honor our
-          </li>
-        </ul>
-        <p className="text-center font-semibold mt-2 text-yellow-400">
+        <p>
+          Life is in Your Veins: Share It! Be The Lifeline! <br /> Donate Blood,
+          Save Lives!
+        </p>
+
+        <p className="text-center font-semibold mt-1 text-yellow-400">
           Copyright © 2024 - All right reserved By Donate Blood
         </p>
       </aside>
       <nav>
-        <h6 className="font-bold text-2xl text-yellow-400">
+        <h6 className="font-bold text-2xl text-yellow-400  mb-3">
           Contact Information
         </h6>
-        <div className="flex items-center mb-4">
-          <FaEnvelope className="text-2xl mr-3 text-yellow-400" />
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
           <div>
-            <h3 className="font-semibold text-lg">Email:</h3>
-            <p>contact@ourorganization.com</p>
+            <div className="flex items-center mb-4">
+              <FaEnvelope className="text-xl mr-3 text-yellow-400" />
+              <div>
+                <h3 className="font-semibold">Email:</h3>
+                <p>contact@ourorganization.com</p>
+              </div>
+            </div>
+            <div className="flex items-center mb-4">
+              <FaPhone className="text-xl mr-3 text-yellow-400" />
+              <div>
+                <h3 className="font-semibold">Phone:</h3>
+                <p>+880123456789</p>
+              </div>
+            </div>
           </div>
-        </div>
-        <div className="flex items-center mb-4">
-          <FaPhone className="text-2xl mr-3 text-yellow-400" />
           <div>
-            <h3 className="font-semibold text-lg">Phone:</h3>
-            <p>+880123456789</p>
-          </div>
-        </div>
-        <div className="flex items-center mb-4">
-          <FaMapMarkerAlt className="text-2xl mr-3 text-yellow-400" />
-          <div>
-            <h3 className="font-semibold text-lg">Address:</h3>
-            <p>123 Donation St, Dhaka, Bangladesh</p>
-          </div>
-        </div>
-        <div className="flex items-center mb-4">
-          <RiUserFollowFill className="text-2xl mr-3 text-yellow-400" />
-          <div>
-            <h3 className="font-semibold text-lg">Follow Us:</h3>
-            <div className="flex space-x-4 mt-2">
-              <Link
-                href="https://facebook.com"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FaFacebook className="text-xl hover:text-red-700 transition duration-300" />
-              </Link>
-              <Link
-                href="https://twitter.com"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FaTwitter className="text-xl hover:text-red-700 transition duration-300" />
-              </Link>
-              <Link
-                href="https://instagram.com"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FaInstagram className="text-xl hover:text-red-700 transition duration-300" />
-              </Link>
+            {" "}
+            <div className="flex items-center mb-4">
+              <FaMapMarkerAlt className="text-xl mr-3 text-yellow-400" />
+              <div>
+                <h3 className="font-semibold">Address:</h3>
+                <p>123 Donation St, Dhaka, Bangladesh</p>
+              </div>
+            </div>
+            <div className="flex items-center mb-4">
+              <RiUserFollowFill className="text-xl mr-3 text-yellow-400" />
+              <div>
+                <h3 className="font-semibold">Follow Us:</h3>
+                <div className="flex space-x-4 mt-2">
+                  <Link
+                    href="https://facebook.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <FaFacebook className="text-xl hover:text-red-700 transition duration-300" />
+                  </Link>
+                  <Link
+                    href="https://twitter.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <FaTwitter className="text-xl hover:text-red-700 transition duration-300" />
+                  </Link>
+                  <Link
+                    href="https://instagram.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <FaInstagram className="text-xl hover:text-red-700 transition duration-300" />
+                  </Link>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </nav>
       <nav>
-        <h6 className="font-bold text-2xl text-yellow-400">Legal</h6>
+        <h6 className="font-bold text-2xl text-yellow-400 mb-3">Legal</h6>
         <a className="link link-hover">Terms of use</a>
         <a className="link link-hover">Privacy policy</a>
         <a className="link link-hover">Cookie policy</a>

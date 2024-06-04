@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import bgImg from "@/assets/bg.jpg";
-import HeroImage from "@/assets/HeroImage.png";
+import HeroImage from "@/assets/BloodDonation.png";
 import Image from "next/image";
 
 const HeroSection = () => {
@@ -9,17 +9,15 @@ const HeroSection = () => {
       className="relative hero min-h-screen bg-contain bg-center"
       style={{ backgroundImage: `url(${bgImg.src})` }}
     >
-      <div className="absolute inset-0 bg-white bg-opacity-95 backdrop-blur-sm"></div>
+      <div className="absolute inset-0 bg-white bg-opacity-80 backdrop-blur-sm"></div>
 
-      <div className="relative hero-content flex-col lg:flex-row-reverse z-10 p-6 lg:p-12">
-        <div className="flex-shrink-0 lg:mr-6">
+      <div className="relative hero-content flex-col lg:flex-row-reverse">
+        <div className="flex-shrink-0 w-2/5">
           <Image
             src={HeroImage}
             alt="Hero Image"
-            className="w-full"
             layout="responsive"
-            width={300}
-            height={200}
+            className="lg:mb-20"
           />
         </div>
         <div>
