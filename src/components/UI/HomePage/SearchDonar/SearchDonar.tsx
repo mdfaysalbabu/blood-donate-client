@@ -2,9 +2,11 @@ import { Donor } from "@/types";
 import DonarInfoCard from "./DonarInfoCard";
 
 const SearchDonar = async () => {
-  const res = await fetch("http://localhost:5000/api/donor-list");
+  const res = await fetch(
+    "https://blood-donation-app-server-two.vercel.app/api/donor-list"
+  );
   const { data: donors } = await res.json();
-  console.log(donors);
+  // console.log(donors);
   return (
     <div className="flex flex-col items-center">
       <div className="bg-pink-100 mt-6 px-24 rounded-lg shadow-lg">

@@ -1,7 +1,7 @@
 import { Donor } from "@/types";
 
 const DonarInfoCard = ({ donor }: { donor: Donor }) => {
-  console.log(donor);
+  // console.log(donor);
 
   // Convert availability status to a more user-friendly format
   const availabilityStatus = donor?.availability

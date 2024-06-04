@@ -1,9 +1,12 @@
 "use client";
 
 import { Donor } from "@/types";
+import markerIcon2x from "leaflet/dist/images/marker-icon-2x.png";
+import markerIcon from "leaflet/dist/images/marker-icon.png";
+import markerShadow from "leaflet/dist/images/marker-shadow.png";
 import "leaflet/dist/leaflet.css";
+import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
-import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 
 const geocode = async (location: string) => {
   try {
@@ -23,6 +26,22 @@ const geocode = async (location: string) => {
   return null;
 };
 
+const MapContainer = dynamic(
+  () => import("react-leaflet").then((mod) => mod.MapContainer),
+  { ssr: false }
+);
+const Marker = dynamic(
+  () => import("react-leaflet").then((mod) => mod.Marker),
+  { ssr: false }
+);
+const Popup = dynamic(() => import("react-leaflet").then((mod) => mod.Popup), {
+  ssr: false,
+});
+const TileLayer = dynamic(
+  () => import("react-leaflet").then((mod) => mod.TileLayer),
+  { ssr: false }
+);
+
 const CovarageArea = () => {
   const [donors, setDonors] = useState<Donor[]>([]);
   const [locations, setLocations] = useState<{
@@ -34,7 +53,7 @@ const CovarageArea = () => {
     const fetchDonors = async () => {
       try {
         const res = await fetch(
-          "http://localhost:5000/api/donor-list?limit=1000"
+          "https://blood-donation-app-server-two.vercel.app/api/donor-list?limit=1000"
         );
         const { data } = await res.json();
         setDonors(data);
@@ -90,44 +109,63 @@ const CovarageArea = () => {
     fetchDonors();
   }, []);
 
+  useEffect(() => {
+    import("leaflet").then((L) => {
+      delete (L.Icon.Default.prototype as any)._getIconUrl;
+      L.Icon.Default.mergeOptions({
+        iconUrl: markerIcon.src,
+        iconRetinaUrl: markerIcon2x.src,
+        shadowUrl: markerShadow.src,
+      });
+    });
+  }, []);
+
   return (
     <div>
-      {" "}
       <div className="my-12 text-center divider divider-error">
         <h1 className="text-2xl font-bold border-2 border-red-700 text-red-700 p-3 inline-block bg-white bg-opacity-75">
           Our Coverage Areas!
         </h1>
       </div>
       <div className="w-full h-96">
-        <MapContainer
-          center={position}
-          zoom={5}
-          scrollWheelZoom={false}
-          className="h-full rounded-lg shadow-lg"
-        >
-          <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-          {donors.map((donor) => {
-            const location = locations[donor.id];
-            if (location) {
-              return (
-                <Marker key={donor.id} position={[location.lat, location.lon]}>
-                  <Popup>
-                    <div>
-                      <h3 className="font-semibold">{donor.name}</h3>
-                      <p>Blood Type: {donor.bloodType}</p>
-                      <p>Location: {donor.location}</p>
-                      <p>
-                        Availability:{" "}
-                        {donor.availability ? "Available" : "Not Available"}
-                      </p>
-                    </div>
-                  </Popup>
-                </Marker>
-              );
-            }
-            return null;
-          })}
-        </MapContainer>
+        {typeof window !== "undefined" && (
+          <MapContainer
+            center={position}
+            zoom={5}
+            scrollWheelZoom={false}
+            className="h-full rounded-lg shadow-lg"
+          >
+            <TileLayer
+              attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            />
+            {donors?.map((donor) => {
+              const location = locations[donor.id];
+              // console.log(donor);
+              if (location) {
+                return (
+                  <Marker
+                    key={donor.id}
+                    position={[location.lat, location.lon]}
+                  >
+                    <Popup>
+                      <div>
+                        <h3 className="font-semibold">{donor.name}</h3>
+                        <p>Blood Type: {donor.bloodType}</p>
+                        <p>Location: {donor.location}</p>
+                        <p>
+                          Availability:{" "}
+                          {donor.availability ? "Available" : "Not Available"}
+                        </p>
+                      </div>
+                    </Popup>
+                  </Marker>
+                );
+              }
+              return null;
+            })}
+          </MapContainer>
+        )}
       </div>
     </div>
   );
