@@ -1,5 +1,3 @@
-import React from "react";
-
 const LegalPolicies = () => {
   return (
     <div className="container mx-auto py-8">
@@ -7,9 +5,8 @@ const LegalPolicies = () => {
         Legal Policies
       </h1>
       <div className="max-w-3xl mx-auto">
-        {/* Terms and Conditions */}
         <section className="mb-12">
-          <h2 className="text-3xl font-semibold text-red-700 mb-4">
+          <h2 className="text-2xl font-semibold text-red-700 mb-4">
             Terms and Conditions
           </h2>
           <p className="text-lg mb-4">
@@ -30,9 +27,8 @@ const LegalPolicies = () => {
           </p>
         </section>
 
-        {/* Privacy Policy */}
         <section className="mb-12">
-          <h2 className="text-3xl font-semibold text-red-700 mb-4">
+          <h2 className="text-2xl font-semibold text-red-700 mb-4">
             Privacy Policy
           </h2>
           <p className="text-lg mb-4">
@@ -54,9 +50,8 @@ const LegalPolicies = () => {
           </p>
         </section>
 
-        {/* Cookie Policy */}
         <section className="mb-12">
-          <h2 className="text-3xl font-semibold text-red-700 mb-4">
+          <h2 className="text-2xl font-semibold text-red-700 mb-4">
             Cookie Policy
           </h2>
           <p className="text-lg mb-4">

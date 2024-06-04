@@ -1,38 +1,120 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Blood Donation App Client
 
-## Getting Started
+## Blood Donation Application Server side live link:
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+[https://blood-donation-app-server-two.vercel.app](https://blood-donation-app-server-two.vercel.app)
+
+## Blood Donation Application Server side repo link:
+
+---
+
+[https://github.com/Porgramming-Hero-web-course/l2-b2-fullstack-track-assignment-8-Upoma218](https://github.com/Porgramming-Hero-web-course/l2-b2-fullstack-track-assignment-8-Upoma218)
+
+---
+
+## Blood Donation Application Cleint side live link:
+
+---
+
+[https://blood-donation-app-server-two.vercel.app](https://blood-donation-app-server-two.vercel.app)
+
+## Blood Donation Application Client side repo link:
+
+---
+
+[https://github.com/Porgramming-Hero-web-course/l2-b2-fullstack-track-assignment-8-Upoma218](https://github.com/Porgramming-Hero-web-course/l2-b2-fullstack-track-assignment-8-Upoma218)
+
+---
+
+## Blood Donation Application Functionalies Demo Video Live link:
+
+---
+
+[https://drive.google.com/file/d/19AEuGSDBf9lUWQWNJVMP3-Rs0gLY4KU2](https://drive.google.com/file/d/19AEuGSDBf9lUWQWNJVMP3-Rs0gLY4KU2)
+
+---
+
+## Blood Donation Application Functionalies Backend Demo Video Live link:
+
+---
+
+[https://drive.google.com/file/d/19AEuGSDBf9lUWQWNJVMP3-Rs0gLY4KU2](https://drive.google.com/file/d/19AEuGSDBf9lUWQWNJVMP3-Rs0gLY4KU2)
+
+---
+
+## Blood Donation Application Functionalies Frontend Demo Video Live link:
+
+---
+
+[https://drive.google.com/file/d/19AEuGSDBf9lUWQWNJVMP3-Rs0gLY4KU2](https://drive.google.com/file/d/19AEuGSDBf9lUWQWNJVMP3-Rs0gLY4KU2)
+
+## **_`Used Technologies`_**
+
+1. next.js
+2. daisyUI
+3. typescript
+4. zod
+5. bcrypt
+6. jsonwebtoken
+7. prisma
+8. cors
+9. redux
+10. gitHub
+11. vercel
+
+## **_`Instructions about how to create the application locally`_**
+
+---
+
+- First, create a folder on our computer
+
+- Open the folder with VSC
+
+- we need to install all necessary software, node, gitbush, postman, etc.
+
+## **_`Run these commands given bellow :`_**
+
+```
+npm install
+
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- After installing all necessary dependencies, we have to create all necessary file
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+  -We must have to handle the error from defferent layer like- validation error, cast error, duplicate error etc.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- Then create all the modules for routing, controlling, servicing
 
-## Learn More
+- Create and Connect the Git repository with the project
 
-To learn more about Next.js, take a look at the following resources:
+  -We should check and fix our code by using eslint and Prettier before sending the code to GitHub
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- We can run our server locally at `http://localhost:3000` or any other port.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- If we want to run a project from a Git repository, we have to clone or download the project from the GitHub repository. Then we have to implement everything locally.
 
-## Deploy on Vercel
+- We should deploy our backend project for accessing from anywhere, like -vercel, cyclic_sh, heroku, etc.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## **_`Functionalities`_**
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-# blood-donation-app-client
-# blood-donation-app-client
+- Implemented login, registration, JWT authentication
+
+- CRUD Operation
+
+- Filtering according to different strategy
+
+- In this application, user can request a doner for boold, checking all request for a donor, all donor list, updating request status, user also can see their own profile and will be able to update their profile.
+
+## **_`Instructions about how to run this application locally`_**
+
+- Create A folder in your computer
+- Go to cmd according to file path
+- Clone this project by this command : `
+git clone "paste the repo link here"`
+
+- Open Your Code With VSC
+- Paste This Command : `npm install`
+- Run the project by this command: `npm run dev`
+- Project will run at :[http://localhost:3000](http://localhost:3000)
