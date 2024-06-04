@@ -96,9 +96,15 @@ const Footer = () => {
       </nav>
       <nav>
         <h6 className="font-bold text-2xl text-yellow-400 mb-3">Legal</h6>
-        <a className="link link-hover">Terms of use</a>
-        <a className="link link-hover">Privacy policy</a>
-        <a className="link link-hover">Cookie policy</a>
+        <Link href="/terms" className="link link-hover">
+          Terms of use
+        </Link>
+        <Link href="/terms" className="link link-hover">
+          Privacy policy
+        </Link>
+        <Link href="/terms" className="link link-hover">
+          Cookie policy
+        </Link>
       </nav>
     </footer>
   );
