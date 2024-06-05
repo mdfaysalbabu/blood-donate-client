@@ -23,3 +23,9 @@ export interface Donor {
     address?: string;
   };
 }
+
+export interface DonorId {
+  params: {
+    donorId: string;
+  };
+}

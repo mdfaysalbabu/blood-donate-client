@@ -1,5 +1,19 @@
 # Blood Donation App Client
 
+## Blood Donation Application Client side live link:
+
+---
+
+[https://blood-donation-app-client.vercel.app](https://blood-donation-app-client.vercel.app)
+
+## Blood Donation Application Client side repo link:
+
+---
+
+[https://github.com/Upoma218/blood-donation-app-client](https://github.com/Upoma218/blood-donation-app-client)
+
+---
+
 ## Blood Donation Application Server side live link:
 
 ---
@@ -11,20 +25,6 @@
 ---
 
 [https://github.com/Upoma218/blood-donation-app-server](https://github.com/Upoma218/blood-donation-app-server)
-
----
-
-## Blood Donation Application Cleint side live link:
-
----
-
-[https://blood-donation-app-client.vercel.app](https://blood-donation-app-client.vercel.app)
-
-## Blood Donation Application Client side repo link:
-
----
-
-[https://github.com/Upoma218/blood-donation-app-client](https://github.com/Upoma218/blood-donation-app-client)
 
 ---
 

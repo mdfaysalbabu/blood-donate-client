@@ -2,15 +2,12 @@ import { Donor } from "@/types";
 import Link from "next/link";
 
 const DonarInfoCard = ({ donor }: { donor: Donor }) => {
-  // console.log(donor);
-
-  // Convert availability status to a more user-friendly format
   const availabilityStatus = donor?.availability
     ? "Available"
     : "Not Available";
 
   return (
-    <div className="card mb-4 rounded-sm shadow-lg shadow-slate-300">
+    <div className="card mb-4 rounded-sm shadow-lg shadow-slate-300 bg-pink-100">
       <div className="card-body items-center text-center">
         <h2 className="card-title text-red-700">
           Donor Name:{" "}
@@ -32,7 +29,7 @@ const DonarInfoCard = ({ donor }: { donor: Donor }) => {
         </p>
 
         <div className="card-actions justify-end">
-          <Link href="/donors/${blog.id}">
+          <Link href={`/donors/${donor.id}`}>
             <button className="btn text-white bg-red-700 font-bold btn-sm">
               See Details
             </button>
