@@ -53,7 +53,7 @@ const CovarageArea = () => {
     const fetchDonors = async () => {
       try {
         const res = await fetch(
-          "https://blood-donation-app-server-two.vercel.app/api/donor-list?limit=1000"
+          "https://blood-donation-app-client.vercel.app/api/donor-list?limit=1000"
         );
         const { data } = await res.json();
         setDonors(data);

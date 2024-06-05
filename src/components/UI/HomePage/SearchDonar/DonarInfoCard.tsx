@@ -1,4 +1,5 @@
 import { Donor } from "@/types";
+import Link from "next/link";
 
 const DonarInfoCard = ({ donor }: { donor: Donor }) => {
   // console.log(donor);
@@ -31,9 +32,11 @@ const DonarInfoCard = ({ donor }: { donor: Donor }) => {
         </p>
 
         <div className="card-actions justify-end">
-          <button className="btn text-white bg-red-700 font-bold btn-sm">
-            See Details
-          </button>
+          <Link href="/donors/${blog.id}">
+            <button className="btn text-white bg-red-700 font-bold btn-sm">
+              See Details
+            </button>
+          </Link>
         </div>
       </div>
     </div>

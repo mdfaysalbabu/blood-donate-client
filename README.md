@@ -18,7 +18,7 @@
 
 ---
 
-[https://blood-donation-app-client.vercel.app/](https://blood-donation-app-client.vercel.app/)
+[https://blood-donation-app-client.vercel.app](https://blood-donation-app-client.vercel.app)
 
 ## Blood Donation Application Client side repo link:
 

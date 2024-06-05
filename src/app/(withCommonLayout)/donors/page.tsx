@@ -1,16 +1,15 @@
-import { Donor } from "@/types";
-import Link from "next/link";
-import DonarInfoCard from "./DonarInfoCard";
+"use client";
 
-const SearchDonar = async () => {
-  const res = await fetch(
-    "https://blood-donation-app-client.vercel.app/api/donor-list"
-  );
-  const { data: donors } = await res.json();
-  // console.log(donors);
+import DonarInfoCard from "@/components/UI/HomePage/SearchDonar/DonarInfoCard";
+import { useGetAllDonorsQuery } from "@/redux/api/donorsApi";
+import { Donor } from "@/types";
+
+const DonorsListPage = () => {
+  const { data: donors, isLoading, isError, error } = useGetAllDonorsQuery([]);
+  //   console.log(donors);
   return (
     <div className="flex flex-col items-center">
-      <div className="bg-pink-100 mt-6 px-24 rounded-lg shadow-lg">
+      <div className=" mt-6 ">
         <h1 className="text-4xl md:text-4xl lg:text-4xl font-semibold my-6 text-red-600 text-center">
           Search Donor Here!
         </h1>
@@ -52,15 +51,9 @@ const SearchDonar = async () => {
           <DonarInfoCard key={donor.id} donor={donor}></DonarInfoCard>
         ))}
       </div>
-      <div>
-        <Link href="/donors">
-          <button className="btn text-white bg-red-700 font-bold">
-            View All Donors
-          </button>
-        </Link>
-      </div>
+      <div></div>
     </div>
   );
 };
 
-export default SearchDonar;
+export default DonorsListPage;
