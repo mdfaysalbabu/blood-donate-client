@@ -70,10 +70,10 @@ const Navbar = () => {
               <a className="justify-between">My Profile</a>
             </li>
             <li>
-              <a>Login</a>
+              <Link href="/login">Login</Link>
             </li>
             <li>
-              <a>Register</a>
+              <Link href="/register">Register</Link>
             </li>
           </ul>
         </div>

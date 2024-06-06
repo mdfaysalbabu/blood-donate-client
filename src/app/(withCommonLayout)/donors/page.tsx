@@ -3,10 +3,58 @@
 import DonarInfoCard from "@/components/UI/HomePage/SearchDonar/DonarInfoCard";
 import { useGetAllDonorsQuery } from "@/redux/api/donorsApi";
 import { Donor } from "@/types";
+import { useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
 
 const DonorsListPage = () => {
-  const { data: donors, isLoading, isError, error } = useGetAllDonorsQuery([]);
+  const [searchTerm, setSearchTerm] = useState<string>("");
+  const [filterQuery, setFilterQuery] = useState<Record<string, any>>({});
+  const [filtarData, setFiltarData] = useState<string>("");
+  console.log(searchTerm);
+
+  const query: Record<string, any> = {};
+
+  const [page, setPage] = useState(1);
+  const [limit, setLimit] = useState(5);
+
+  query["page"] = page;
+  query["limit"] = limit;
+
+  let pageCount: number = 0;
+
+  const handleChange = (value: number) => {
+    setPage(value);
+  };
+
+  const { data, isLoading } = useGetAllDonorsQuery({
+    ...filterQuery,
+    ...query,
+  });
+  console.log(data);
+  const donors = data?.donors;
+  const meta = data?.meta;
   console.log(donors);
+
+  if (meta?.total) {
+    pageCount = Math.ceil(meta.total / limit);
+  }
+  const onSearchHandler = () => {
+    setFilterQuery({ [filtarData]: searchTerm });
+  };
+
+  const searchParams = useSearchParams();
+  useEffect(() => {
+    const filterType = searchParams.get("filterType");
+    const filterValue = searchParams.get("filterValue");
+    if (filterType) {
+      setFiltarData(filterType);
+    }
+    if (filterValue) {
+      setSearchTerm(filterValue);
+    }
+    setFilterQuery({ [filterType as string]: filterValue });
+  }, [searchParams]);
+
   return (
     <div>
       <div className="flex flex-col items-center">
@@ -19,24 +67,33 @@ const DonorsListPage = () => {
               <input
                 className="input input-bordered join-item"
                 placeholder="Search"
+                onChange={(e) => setSearchTerm(e.target.value)}
               />
             </div>
             <div className="mb-2 md:mb-0">
               <label htmlFor="genre" className="sr-only">
                 Select Genre
               </label>
-              <select id="genre" className="select select-bordered join-item">
+              <select
+                id="genre"
+                className="select select-bordered join-item"
+                onChange={(e) => setFiltarData(e.target.value)}
+              >
                 <option disabled selected>
                   Filter
                 </option>
 
-                <option>Blood Type</option>
-                <option>Location</option>
-                <option>Availability</option>
+                <option value="bloodType">Blood Type</option>
+                <option value="location">Location</option>
+                <option value="availabilty">Availability</option>
+                <option value="searchTerm">SearchTerm</option>
               </select>
             </div>
             <div>
-              <button className="btn bg-red-700 text-white font-bold join-item">
+              <button
+                className="btn bg-red-700 text-white font-bold join-item"
+                onClick={onSearchHandler}
+              >
                 Search
               </button>
             </div>
@@ -52,6 +109,20 @@ const DonorsListPage = () => {
             <DonarInfoCard key={donor.id} donor={donor}></DonarInfoCard>
           ))}
         </div>
+        <div className="my-5">
+          <div className="join">
+            {Array.from(Array(pageCount).keys()).map((el) => (
+              <button
+                key={el}
+                onClick={() => handleChange(el + 1)}
+                className="join-item btn"
+              >
+                {el + 1}
+              </button>
+            ))}
+          </div>
+        </div>
+        <div></div>
       </div>
     </div>
   );
