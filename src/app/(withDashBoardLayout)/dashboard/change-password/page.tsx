@@ -26,28 +26,37 @@ const ChangePassword = () => {
   const [changePassword] = useChangePasswordMutation();
   const router = useRouter();
   const [error, setError] = useState("");
+
   const onSubmit = async (values: FieldValues) => {
     const { confirmPassword, ...formData } = values;
+    console.log(values);
     try {
       const res = await changePassword(formData);
+      console.log("Response:", res);
 
-      if ("data" in res && res.data.status === 200) {
-        logoutUser(router);
-        toast.success("Password Changed Successfully");
+      // Check if the response is successful
+      if (res && "data" in res && res.data && res.data.success) {
+        if (res.data.statusCode === 200) {
+          logoutUser(router);
+          toast.success(res.data.message || "Password Changed Successfully");
+        } else {
+          throw new Error(res.data.message || "An error occurred");
+        }
       } else {
-        throw new Error("Incorrect Old Password");
+        const errorMessage = res.data?.message || "Incorrect Old Password";
+        throw new Error(errorMessage);
       }
     } catch (error: any) {
-      toast.success("Incorrect Old Password");
+      toast.error(error.message || "An error occurred");
       console.log(error);
       setError(error.message);
     }
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-pink-100 p-8">
-      <div className="max-w-2xl w-full bg-white shadow-md rounded-md p-8 text-center">
-        <h1 className="text-3xl font-semi text-red-700 bg-white mb-4">
+    <div className="flex min-h-screen items-center justify-center bg-white p-8 w-full">
+      <div className="max-w-2xl w-full bg-pink-100 shadow-md rounded-md p-8 text-center">
+        <h1 className="text-3xl font-semi text-red-700 mb-4">
           Change Password
         </h1>
         {error && (
@@ -56,7 +65,7 @@ const ChangePassword = () => {
 
         <DBForm
           onSubmit={onSubmit}
-          defaultValues={{ oldPassword: "", newPassword: "" }}
+          defaultValues={{ currentPassword: "", newPassword: "" }}
           resolver={zodResolver(validationSchema)}
         >
           <div className="grid grid-cols-1 gap-4 mb-4">

@@ -78,6 +78,8 @@ const RegisterPage = () => {
           password: values.password,
           email: values.email,
         });
+        console.log({ result });
+
         if (result?.data?.accessToken) {
           storeUserInfo({ accessToken: result?.data?.accessToken });
           router.push("/dashboard");

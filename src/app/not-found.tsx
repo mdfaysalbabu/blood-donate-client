@@ -1,7 +1,10 @@
+import notFoundImg from "@/assets/notFound.jpg";
+import Image from "next/image";
+
 const NotFoundPage = () => {
   return (
     <div>
-      <h1>404 Not Found!</h1>
+      <Image src={notFoundImg} alt="notFoundImg" layout="responsive" />
     </div>
   );
 };

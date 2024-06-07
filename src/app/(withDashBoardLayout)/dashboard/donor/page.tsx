@@ -1,7 +1,7 @@
 const DonorPage = () => {
   return (
     <div>
-      <h1>This is donor page</h1>
+      <h1>All Requests from public</h1>
     </div>
   );
 };

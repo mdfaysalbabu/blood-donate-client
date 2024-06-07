@@ -6,17 +6,24 @@ import { logoutUser } from "@/services/actions/logoutUser";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 const Navbar = () => {
-  const userInfo = useUserInfo();
-  console.log(userInfo);
+  const { userInfo, setUserInfo } = useUserInfo();
   const router = useRouter();
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, [router]);
 
   const handleLogOut = () => {
     logoutUser(router);
+    setUserInfo("");
   };
+
   return (
-    <div className="navbar px-6 lg:px-24 bg-red-700">
+    <div className="navbar px-2 md:px-8  lg:px-16 bg-red-700">
       <div className="navbar-start">
         <div className="dropdown lg:hidden">
           <div tabIndex={0} role="button" className="btn btn-ghost">
@@ -24,7 +31,7 @@ const Navbar = () => {
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5 text-white"
               fill="none"
-              viewBox="0 0 24 24"
+              viewBox="0 0 16 16"
               stroke="currentColor"
             >
               <path
@@ -48,7 +55,7 @@ const Navbar = () => {
             <li>
               <Link href="/donors">All Donors</Link>
             </li>
-            {userInfo?.id ? (
+            {isClient && userInfo?.email ? (
               <li>
                 <Link href="/dashboard">Dashboard</Link>
               </li>
@@ -56,8 +63,8 @@ const Navbar = () => {
           </ul>
         </div>
         <Link href="/">
-          <h1 className="text-white font-bold text-2xl lg:text-3xl">
-            Donate <span className="font-bold">Blood</span>
+          <h1 className="text-md lg:text-2xl md:text-xl sm:text-lg text-white font-bold">
+            Donate Blood
           </h1>
         </Link>
       </div>
@@ -72,7 +79,7 @@ const Navbar = () => {
           <li>
             <Link href="/donors">All Donors</Link>
           </li>
-          {userInfo?.id ? (
+          {isClient && userInfo?.email ? (
             <li>
               <Link href="/dashboard">Dashboard</Link>
             </li>
@@ -80,8 +87,10 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end">
-        {userInfo?.email ? (
-          <p className="text-xl text-white font-bold">{userInfo?.email}</p>
+        {isClient && userInfo?.email ? (
+          <p className="text-sm lg:text-lg md:text-md sm:text-sm text-white font-bold">
+            {userInfo?.email}
+          </p>
         ) : null}
         <div className="dropdown dropdown-end">
           <div
@@ -97,10 +106,10 @@ const Navbar = () => {
             tabIndex={0}
             className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-48"
           >
-            {userInfo?.id ? (
+            {isClient && userInfo?.email ? (
               <>
                 <li>
-                  <Link href="/profile">My Profile</Link>
+                  <Link href="/dashboard">My Profile</Link>
                 </li>
                 <li>
                   <a onClick={handleLogOut}>Logout</a>

@@ -3,18 +3,23 @@ import DashboardDrawer from "@/components/Dashboard/DashboardDrawer/DashboardDra
 import Footer from "@/components/Shared/Footer";
 import Navbar from "@/components/Shared/Navbar";
 import { isLoggedIn } from "@/services/auth.services";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next/navigation"; // Change import statement
+import { useEffect } from "react";
 
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   const router = useRouter();
-  if (!isLoggedIn()) {
-    return router.push("/login");
-  }
+
+  useEffect(() => {
+    if (!isLoggedIn()) {
+      router.push("/login");
+    }
+  }, [router]);
+
   return (
     <>
-      <Navbar></Navbar>
-      <DashboardDrawer>{children} </DashboardDrawer>
-      <Footer></Footer>
+      <Navbar />
+      <DashboardDrawer>{children}</DashboardDrawer>
+      <Footer />
     </>
   );
 };

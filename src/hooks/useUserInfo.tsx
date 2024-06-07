@@ -2,11 +2,13 @@ import { authKey } from "@/constant/authKey";
 import { decodedToken } from "@/utils/jwt";
 import { getFromLocalStorage } from "@/utils/local-storage";
 import { JwtPayload } from "jwt-decode";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const useUserInfo = (): any | string => {
   const [userInfo, setUserInfo] = useState<any | string>("");
-
+  const router = useRouter();
+  console.log({ userInfo });
   useEffect(() => {
     const fetchUserInfo = () => {
       const authToken = getFromLocalStorage(authKey);
@@ -27,9 +29,9 @@ const useUserInfo = (): any | string => {
     };
 
     fetchUserInfo();
-  }, []);
+  }, [router]);
 
-  return userInfo;
+  return { userInfo, setUserInfo };
 };
 
 export default useUserInfo;

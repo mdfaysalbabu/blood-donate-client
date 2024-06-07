@@ -1,3 +1,5 @@
+import { UserRole } from "@/constant/role";
+
 export type IMeta = {
   page: number;
   limit: number;
@@ -19,3 +21,5 @@ export type IGenericErrorMessage = {
   path: string | number;
   message: string;
 };
+
+export type UserRole = keyof typeof UserRole;

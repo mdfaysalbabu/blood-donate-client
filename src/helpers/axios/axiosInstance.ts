@@ -1,8 +1,8 @@
-// import { authKey } from "@/contants/authkey";
-// import setAccessToken from "@/services/actions/setAccessToken";
-// import { getNewAccessToken } from "@/services/auth.services";
+import { authKey } from "@/constant/authKey";
+import setAccessToken from "@/services/actions/setAccessToken";
+import { getNewAccessToken } from "@/services/auth.services";
 import { IGenericErrorResponse, ResponseSuccessType } from "@/types/common";
-// import { getFromLocalStorage, setToLocalStorage } from "@/utils/local-storage";
+import { getFromLocalStorage, setToLocalStorage } from "@/utils/local-storage";
 import axios from "axios";
 
 const instance = axios.create();
@@ -14,11 +14,11 @@ instance.defaults.timeout = 60000;
 instance.interceptors.request.use(
   function (config) {
     // Do something before request is sent
-    // const accessToken = getFromLocalStorage(authKey);
+    const accessToken = getFromLocalStorage(authKey);
 
-    // if (accessToken) {
-    //   config.headers.Authorization = accessToken;
-    // }
+    if (accessToken) {
+      config.headers.Authorization = accessToken;
+    }
     return config;
   },
   function (error) {
@@ -31,6 +31,7 @@ instance.interceptors.request.use(
 instance.interceptors.response.use(
   //@ts-ignore
   function (response) {
+    console.log(response.data);
     // Any status code that lie within the range of 2xx cause this function to trigger
     // Do something with response data
     const responseObject: ResponseSuccessType = {
@@ -47,11 +48,11 @@ instance.interceptors.response.use(
     // console.log(config);
     if (error?.response?.status === 500 && !config.sent) {
       config.sent = true;
-      //   const response = await getNewAccessToken();
-      //   const accessToken = response?.data?.accessToken;
-      //   config.headers["Authorization"] = accessToken;
-      //   setToLocalStorage(authKey, accessToken);
-      //   setAccessToken(accessToken);
+      const response = await getNewAccessToken();
+      const accessToken = response?.data?.accessToken;
+      config.headers["Authorization"] = accessToken;
+      setToLocalStorage(authKey, accessToken);
+      setAccessToken(accessToken);
       return instance(config);
     } else {
       const responseObject: IGenericErrorResponse = {

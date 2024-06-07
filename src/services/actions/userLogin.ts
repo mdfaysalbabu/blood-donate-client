@@ -11,13 +11,13 @@ export const userLogin = async (data: FieldValues) => {
     },
     body: JSON.stringify(data),
     credentials: "include",
+    cache: "reload",
   });
   const userInfo = await res.json();
-  console.log(userInfo);
 
   if (userInfo.data.accessToken) {
     setAccessToken(userInfo.data.accessToken, {
-      redirect: "/dashboard",
+      // redirect: "/dashboard",
     });
   }
 
