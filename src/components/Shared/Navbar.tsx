@@ -1,8 +1,20 @@
+"use client";
+
 import user from "@/assets/user.png";
+import useUserInfo from "@/hooks/useUserInfo";
+import { logoutUser } from "@/services/actions/logoutUser";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const Navbar = () => {
+  const userInfo = useUserInfo();
+  console.log(userInfo);
+  const router = useRouter();
+
+  const handleLogOut = () => {
+    logoutUser(router);
+  };
   return (
     <div className="navbar px-6 lg:px-24 bg-red-700">
       <div className="navbar-start">
@@ -33,6 +45,14 @@ const Navbar = () => {
             <li>
               <Link href="/about">About Us</Link>
             </li>
+            <li>
+              <Link href="/donors">All Donors</Link>
+            </li>
+            {userInfo?.id ? (
+              <li>
+                <Link href="/dashboard">Dashboard</Link>
+              </li>
+            ) : null}
           </ul>
         </div>
         <Link href="/">
@@ -49,9 +69,20 @@ const Navbar = () => {
           <li>
             <Link href="/about">About Us</Link>
           </li>
+          <li>
+            <Link href="/donors">All Donors</Link>
+          </li>
+          {userInfo?.id ? (
+            <li>
+              <Link href="/dashboard">Dashboard</Link>
+            </li>
+          ) : null}
         </ul>
       </div>
       <div className="navbar-end">
+        {userInfo?.email ? (
+          <p className="text-xl text-white font-bold">{userInfo?.email}</p>
+        ) : null}
         <div className="dropdown dropdown-end">
           <div
             tabIndex={0}
@@ -66,15 +97,25 @@ const Navbar = () => {
             tabIndex={0}
             className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-48"
           >
-            <li>
-              <a className="justify-between">My Profile</a>
-            </li>
-            <li>
-              <Link href="/login">Login</Link>
-            </li>
-            <li>
-              <Link href="/register">Register</Link>
-            </li>
+            {userInfo?.id ? (
+              <>
+                <li>
+                  <Link href="/profile">My Profile</Link>
+                </li>
+                <li>
+                  <a onClick={handleLogOut}>Logout</a>
+                </li>
+              </>
+            ) : (
+              <>
+                <li>
+                  <Link href="/login">Login</Link>
+                </li>
+                <li>
+                  <Link href="/register">Register</Link>
+                </li>
+              </>
+            )}
           </ul>
         </div>
       </div>

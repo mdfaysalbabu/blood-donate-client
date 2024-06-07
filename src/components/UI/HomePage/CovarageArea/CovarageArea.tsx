@@ -44,6 +44,7 @@ const TileLayer = dynamic(
 
 const CovarageArea = () => {
   const [donors, setDonors] = useState<Donor[]>([]);
+  const [isExpanded, setIsExpanded] = useState(false);
   const [locations, setLocations] = useState<{
     [key: string]: { lat: number; lon: number };
   }>({});
@@ -120,12 +121,50 @@ const CovarageArea = () => {
     });
   }, []);
 
+  const handleToggle = () => {
+    setIsExpanded(!isExpanded);
+  };
+
   return (
     <div>
       <div className="my-12 text-center divider divider-error">
         <h1 className="text-2xl font-bold border-2 border-red-700 text-red-700 p-3 inline-block bg-white bg-opacity-75">
           Our Coverage Areas!
         </h1>
+      </div>
+
+      <div className="mb-6 mx-auto max-w-6xl text-center px-4">
+        <p>
+          At our blood donation organization, we are proud to serve communities
+          across all districts in Bangladesh. Our comprehensive coverage ensures
+          that wherever you are, a blood donor is within reach, ready to make a
+          life-saving contribution.{" "}
+          <span>
+            <button
+              onClick={handleToggle}
+              className="text-pink-500 mt-2 cursor-pointer"
+            >
+              {isExpanded ? "Read Less" : "Read More..."}
+            </button>
+          </span>
+        </p>
+
+        {isExpanded && (
+          <div className="mt-4">
+            <p>
+              On our interactive map, you can explore our extensive network of
+              donors spread throughout the country. By clicking on the location
+              icons, you can view detailed information about donors in that
+              area, including their availability and contact details. Our most
+              extensive coverage is in Dhaka, where we have a robust network of
+              dedicated donors. Whether you are in need of blood in the bustling
+              capital or in any other district, our mission is to make sure that
+              help is always nearby. Explore our map to see how we connect
+              donors and recipients across Bangladesh, bringing communities
+              together to save lives, one donation at a time.
+            </p>
+          </div>
+        )}
       </div>
       <div className="w-full h-96">
         {typeof window !== "undefined" && (

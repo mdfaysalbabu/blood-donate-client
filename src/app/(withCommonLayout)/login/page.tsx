@@ -36,7 +36,7 @@ const LoginPage = () => {
       if (res?.data?.accessToken) {
         toast.success(res?.message);
         storeUserInfo({ accessToken: res?.data?.accessToken });
-        router.push("/");
+        router.push("/dashboard");
       } else {
         setError(res.message);
       }
@@ -50,7 +50,7 @@ const LoginPage = () => {
     <div className=" flex h-screen items-center justify-center bg-pink-100">
       <div className="max-w-md w-full bg-white shadow-md rounded-md p-8 text-center border-4 border-pink-100">
         <h1 className="text-3xl font-semi text-red-700 bg-white mb-4">
-          Login Here
+          Login To Donate Blood
         </h1>
         {error && (
           <div className="bg-red-500 text-white p-2 rounded mb-4">{error}</div>

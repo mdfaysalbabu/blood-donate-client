@@ -1,6 +1,6 @@
 export interface UserProfile {
   id: string;
-  userId?: string;
+  id?: string;
   bio?: string;
   age?: number;
   lastDonationDate?: string;

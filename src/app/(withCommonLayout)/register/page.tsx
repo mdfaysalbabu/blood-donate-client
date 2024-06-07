@@ -80,7 +80,7 @@ const RegisterPage = () => {
         });
         if (result?.data?.accessToken) {
           storeUserInfo({ accessToken: result?.data?.accessToken });
-          router.push("/");
+          router.push("/dashboard");
         } else {
           setError(res.message);
         }
@@ -95,7 +95,7 @@ const RegisterPage = () => {
     <div className="flex min-h-screen items-center justify-center bg-pink-100 p-8">
       <div className="max-w-2xl w-full bg-white shadow-md rounded-md p-8 text-center">
         <h1 className="text-3xl font-semi text-red-700 bg-white mb-4">
-          Register Now
+          Register To Donate Blood
         </h1>
         {error && (
           <div className="bg-red-500 text-white p-2 rounded mb-4">{error}</div>

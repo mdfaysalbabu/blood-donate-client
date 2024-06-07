@@ -1,5 +1,6 @@
 "use client";
 
+import LoadingCard from "@/components/LoadingCard";
 import DonarInfoCard from "@/components/UI/HomePage/SearchDonar/DonarInfoCard";
 import { useGetAllDonorsQuery } from "@/redux/api/donorsApi";
 import { Donor } from "@/types";
@@ -15,7 +16,7 @@ const DonorsListPage = () => {
   const query: Record<string, any> = {};
 
   const [page, setPage] = useState(1);
-  const [limit, setLimit] = useState(5);
+  const [limit, setLimit] = useState(8);
 
   query["page"] = page;
   query["limit"] = limit;
@@ -106,7 +107,11 @@ const DonorsListPage = () => {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-6 mx-12">
           {donors?.map((donor: Donor) => (
-            <DonarInfoCard key={donor.id} donor={donor}></DonarInfoCard>
+            <DonarInfoCard
+              key={donor.id}
+              donor={donor}
+              isLoading={isLoading}
+            ></DonarInfoCard>
           ))}
         </div>
         <div className="my-5">
