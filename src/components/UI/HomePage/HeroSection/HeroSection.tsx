@@ -28,7 +28,7 @@ const HeroSection = () => {
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold my-3 text-red-600">
             Donate Blood, Save Lives!
           </h1>
-          <p className="pb-6">
+          <p className="my-5">
             Every drop counts in the journey of hope. Be the beacon of light for
             someone in their darkest hour. Your blood donation is not just a
             gesture; it's a lifeline. Join us in this noble mission to save

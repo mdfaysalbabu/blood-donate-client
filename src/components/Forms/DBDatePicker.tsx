@@ -1,9 +1,8 @@
-import React from "react";
-import { Controller, useFormContext } from "react-hook-form";
+import dayjs from "dayjs";
+import "react-calendar/dist/Calendar.css";
 import DatePicker from "react-date-picker";
 import "react-date-picker/dist/DatePicker.css";
-import "react-calendar/dist/Calendar.css";
-import dayjs from "dayjs";
+import { Controller, useFormContext } from "react-hook-form";
 
 interface IDatePicker {
   name: string;
@@ -11,6 +10,7 @@ interface IDatePicker {
   label?: string;
   required?: boolean;
   fullWidth?: boolean;
+  className?: string;
 }
 
 const DBDatePicker = ({

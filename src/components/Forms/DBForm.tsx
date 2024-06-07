@@ -34,9 +34,9 @@ const DBForm = ({
   const methods = useForm(formConfig);
   const { handleSubmit, reset } = methods;
 
-  const submit: SubmitHandler<FieldValues> = (data) => {
+  const submit: SubmitHandler<FieldValues> = async (data) => {
     // console.log(data);
-    onSubmit(data);
+    await onSubmit(data);
     reset();
   };
 
