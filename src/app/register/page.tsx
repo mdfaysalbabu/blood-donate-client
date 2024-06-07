@@ -5,6 +5,7 @@ import DBForm from "@/components/Forms/DBForm";
 import DBInput from "@/components/Forms/DBInput";
 import DBSelectField from "@/components/Forms/DBSelectField";
 import { registerUser } from "@/services/actions/registerUser";
+import { userLogin } from "@/services/actions/userLogin";
 import { storeUserInfo } from "@/services/auth.services";
 import { dateFormatter } from "@/utils/dateFormatter";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -73,8 +74,12 @@ const RegisterPage = () => {
 
       if (res?.data?.id) {
         toast.success(res?.message);
-        if (res?.data?.accessToken) {
-          storeUserInfo({ accessToken: res?.data?.accessToken });
+        const result = await userLogin({
+          password: values.password,
+          email: values.email,
+        });
+        if (result?.data?.accessToken) {
+          storeUserInfo({ accessToken: result?.data?.accessToken });
           router.push("/");
         } else {
           setError(res.message);
