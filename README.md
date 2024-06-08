@@ -1,4 +1,16 @@
-# Blood Donation App Client
+## Blood Donation Application Server side live link:
+
+---
+
+[https://blood-donation-app-server-two.vercel.app](https://blood-donation-app-server-two.vercel.app)
+
+## Blood Donation Application Server side repo link:
+
+---
+
+[https://github.com/Upoma218/blood-donation-app-server](https://github.com/Upoma218/blood-donation-app-server)
+
+---
 
 ## Blood Donation Application Client side live link:
 
@@ -14,53 +26,31 @@
 
 ---
 
-## Blood Donation Application Server side live link:
-
----
-
-[hhttp://localhost:5000](hhttp://localhost:5000)
-
-## Blood Donation Application Server side repo link:
-
----
-
-[https://github.com/Upoma218/blood-donation-app-server](https://github.com/Upoma218/blood-donation-app-server)
-
----
-
 ## Blood Donation Application Functionalies Demo Video Live link:
 
 ---
 
-[https://drive.google.com/file/d/19AEuGSDBf9lUWQWNJVMP3-Rs0gLY4KU2](https://drive.google.com/file/d/19AEuGSDBf9lUWQWNJVMP3-Rs0gLY4KU2)
+[https://drive.google.com/drive/folders/1mGZ5aM-DeeRx6K4_NmYVkmV7eHghZaEy](https://drive.google.com/drive/folders/1mGZ5aM-DeeRx6K4_NmYVkmV7eHghZaEy)
+
+## Login Credindials:
 
 ---
 
-## Blood Donation Application Functionalies Backend Demo Video Live link:
-
----
-
-[https://drive.google.com/file/d/19AEuGSDBf9lUWQWNJVMP3-Rs0gLY4KU2](https://drive.google.com/file/d/19AEuGSDBf9lUWQWNJVMP3-Rs0gLY4KU2)
-
----
-
-## Blood Donation Application Functionalies Frontend Demo Video Live link:
-
----
-
-[https://drive.google.com/file/d/19AEuGSDBf9lUWQWNJVMP3-Rs0gLY4KU2](https://drive.google.com/file/d/19AEuGSDBf9lUWQWNJVMP3-Rs0gLY4KU2)
+(admin: email: admin@gmail.com, password: admin123)
+(donor: email: donor@gmail.com, password: donor123)
+(requester: email: requester@gmail.com, password: requester123)
 
 ## **_`Used Technologies`_**
 
-1. next.js
-2. daisyUI
+1. expressJS
+2. postgresql
 3. typescript
 4. zod
 5. bcrypt
 6. jsonwebtoken
 7. prisma
 8. cors
-9. redux
+9. dotenv
 10. gitHub
 11. vercel
 
@@ -77,21 +67,31 @@
 ## **_`Run these commands given bellow :`_**
 
 ```
-npm install
+npm init -y
 
 ```
 
+- Edit "`tsconfig.json`" file, change the rootDir and outDir directory
+
+- Create a ".env" file for securing all necessary information
+
 - After installing all necessary dependencies, we have to create all necessary file
 
+  -Then we have to create our model with the necessary validation
+
   -We must have to handle the error from defferent layer like- validation error, cast error, duplicate error etc.
+
+- We have to connect the server with our project, for this, we have to create database and connect with postgresql database, for this, we can follow the documentation from here: [https://www.prisma.io/docs/getting-started/setup-prisma/start-from-scratch/relational-databases-typescript-postgresql](https://www.prisma.io/docs/getting-started/setup-prisma/start-from-scratch/relational-databases-typescript-postgresql)
 
 - Then create all the modules for routing, controlling, servicing
 
 - Create and Connect the Git repository with the project
 
+- Create ".gitignore" for avoiding to avoid sending all the sensitive files like ".env", also with dist and node_modes
+
   -We should check and fix our code by using eslint and Prettier before sending the code to GitHub
 
-- We can run our server locally at `http://localhost:3000` or any other port.
+- We can run our server locally at `https://blood-donation-app-client.vercel.app` or any other port.
 
 - If we want to run a project from a Git repository, we have to clone or download the project from the GitHub repository. Then we have to implement everything locally.
 
@@ -105,7 +105,7 @@ npm install
 
 - Filtering according to different strategy
 
-- In this application, user can request a doner for boold, checking all request for a donor, all donor list, updating request status, user also can see their own profile and will be able to update their profile.
+- In this application, user can request a doner for boold, checkingall request for a donor, all donor list, updating request status, user also can see their own profile and will be able to update their profile.
 
 ## **_`Instructions about how to run this application locally`_**
 
@@ -115,6 +115,11 @@ npm install
 git clone "paste the repo link here"`
 
 - Open Your Code With VSC
-- Paste This Command : `npm install`
+- Paste This Command : `npm init -y`
+- Create `.env` file in root folder
+- Add your mongo server with your project
+- Add other environment variables in `.env` file
 - Run the project by this command: `npm run dev`
-- Project will run at :[http://localhost:3000](http://localhost:3000)
+- Project will run at :[https://blood-donation-app-client.vercel.app](https://blood-donation-app-client.vercel.app)
+
+# blood-donation-app-server

@@ -59,9 +59,18 @@ const DonorPage = () => {
     });
   };
 
+  if (requests?.length <= 0) {
+    return (
+      <p className="text-5xl text-center my-12 font-bold text-pink-700">
+        You Have No Request
+      </p>
+    );
+  }
+
   const newData = requests?.map((request: any) => {
     return {
       ...request,
+
       name: request?.requester?.name,
       email:
         request?.requestStatus === "APPROVED"

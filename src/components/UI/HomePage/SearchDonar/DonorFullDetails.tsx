@@ -1,25 +1,17 @@
 "use client";
 import useUserInfo from "@/hooks/useUserInfo";
-import { logoutUser } from "@/services/actions/logoutUser";
 import { Donor } from "@/types";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const DonorFullDetails = ({ donor }: { donor: Donor }) => {
-  const { userInfo, setUserInfo } = useUserInfo();
-  const router = useRouter();
+  const { userInfo } = useUserInfo();
+  console.log({ userInfo });
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
     setIsClient(true);
   }, []);
-
-  const handleLogOut = () => {
-    logoutUser(router);
-    setUserInfo("");
-    router.push("/");
-  };
 
   const availabilityStatus = donor?.availability
     ? "Available"
@@ -53,7 +45,7 @@ const DonorFullDetails = ({ donor }: { donor: Donor }) => {
           </p>
 
           <div className="card-actions justify-end">
-            {isClient && userInfo?.email ? (
+            {isClient && userInfo?.role === "requester" ? (
               <Link
                 href={`/dashboard/requester/create-request?donorId=${donor.id}`}
               >

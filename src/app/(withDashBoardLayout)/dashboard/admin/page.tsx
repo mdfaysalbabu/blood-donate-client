@@ -65,7 +65,7 @@ const AdminPage = () => {
         >
           <option value="donor">Donor</option>
           <option value="admin">Admin</option>
-          <option value="requester">Request</option>
+          <option value="requester">Requester</option>
         </select>
       ),
     };

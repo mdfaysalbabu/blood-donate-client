@@ -47,12 +47,16 @@ const ProfileUpdateModal: React.FC<ProfileUpdateModalProps> = ({
 }) => {
   const [updateMYProfile] = useUpdateMYProfileMutation();
   const [isSuccess, setIsSuccess] = useState(false);
-  const [initial, setInitial] = useState({});
+  const [users, setUsers] = useState({});
 
   const { handleSubmit, reset, setValue } = useForm({
-    resolver: zodResolver(updateUserProfileSchema),
     defaultValues,
+    resolver: zodResolver(updateUserProfileSchema),
   });
+  useEffect(() => {
+    setUsers(defaultValues);
+    reset(defaultValues);
+  }, [reset]);
 
   console.log(defaultValues);
 
@@ -76,13 +80,6 @@ const ProfileUpdateModal: React.FC<ProfileUpdateModalProps> = ({
     setOpen(false);
   };
 
-  useEffect(() => {
-    setInitial({ ...defaultValues });
-  }, [defaultValues]);
-  if (!defaultValues?.phone) {
-    return;
-  }
-
   return (
     <DBModal
       id={id}
@@ -94,15 +91,8 @@ const ProfileUpdateModal: React.FC<ProfileUpdateModalProps> = ({
           <h1 className="text-3xl font-semibold text-red-700 my-4">
             Update Profile
           </h1>
-          <DBForm onSubmit={handleFormSubmit} defaultValues={initial}>
+          <DBForm onSubmit={handleFormSubmit}>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
-              <DBInput
-                name="phone"
-                label="Phone"
-                type="text"
-                fullWidth
-                className="input input-bordered w-full"
-              />
               <DBInput
                 name="location"
                 label="Location"

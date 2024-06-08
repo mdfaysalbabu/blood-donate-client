@@ -172,7 +172,16 @@ const RegisterPage = () => {
             </div>
             <div>
               <DBSelectField
-                items={["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"]}
+                items={[
+                  "A Positive",
+                  "A Negative",
+                  "B Positive",
+                  "B Negative",
+                  "AB Positive",
+                  "AB Negative",
+                  "O Positive",
+                  "O Negative",
+                ]}
                 name="bloodType"
                 label="Select Your Blood Type"
               />

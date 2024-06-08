@@ -36,7 +36,7 @@ const columns = [
   { header: "Phone", accessor: "phone" },
   {
     header: "Location",
-    accessor: "requests.location",
+    accessor: "location",
   },
 
   { header: "Reason", accessor: "reason" },
@@ -54,6 +54,14 @@ const columns = [
 
 const RequesterPage = () => {
   const { data: requests, isLoading } = useGetAllRequestQuery({});
+
+  if (requests?.length <= 0) {
+    return (
+      <p className="text-5xl text-center my-12 font-bold text-pink-700">
+        You Have No Request
+      </p>
+    );
+  }
 
   console.log(requests);
   const newData = requests?.map((request: any) => {

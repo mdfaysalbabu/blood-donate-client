@@ -7,14 +7,15 @@ const DashboardDrawer = ({ children }: { children: ReactNode }) => {
   const [userRole, setUserRole] = useState("");
 
   useEffect(() => {
-    const { role } = getUserInfo() as any;
-    // console.log(role);
+    const userRole = getUserInfo() as any;
+    const role = userRole?.role;
+    console.log(role);
     setUserRole(role);
   }, []);
   return (
     <div className="drawer lg:drawer-open md:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-      <div className="drawer-content flex flex-col items-center justify-center w-full">
+      <div className="drawer-content  w-full">
         <label
           htmlFor="my-drawer-2"
           className="btn bg-red-700 drawer-button lg:hidden absolute top-1 left-1 btn-xs text-white"
