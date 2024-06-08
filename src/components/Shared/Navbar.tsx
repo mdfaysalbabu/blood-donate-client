@@ -15,11 +15,12 @@ const Navbar = () => {
 
   useEffect(() => {
     setIsClient(true);
-  }, [router]);
+  }, []);
 
   const handleLogOut = () => {
     logoutUser(router);
     setUserInfo("");
+    router.push("/");
   };
 
   return (

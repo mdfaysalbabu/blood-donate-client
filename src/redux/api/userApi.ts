@@ -3,6 +3,14 @@ import { baseApi } from "./baseApi";
 
 export const userApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
+    createRequest: build.mutation({
+      query: (data) => ({
+        url: "/donation-request",
+        method: "POST",
+        data,
+      }),
+      invalidatesTags: [tagTypes.requestData],
+    }),
     getMYProfile: build.query({
       query: () => {
         return {
@@ -25,4 +33,8 @@ export const userApi = baseApi.injectEndpoints({
   }),
 });
 
-export const { useGetMYProfileQuery, useUpdateMYProfileMutation } = userApi;
+export const {
+  useGetMYProfileQuery,
+  useUpdateMYProfileMutation,
+  useCreateRequestMutation,
+} = userApi;

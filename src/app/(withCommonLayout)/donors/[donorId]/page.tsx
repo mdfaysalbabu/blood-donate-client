@@ -5,15 +5,15 @@ const DonorDetailsPage = async ({ params }: DonorId) => {
   console.log({ params });
   try {
     const res = await fetch(
-      `http://localhost:5000/api/donor/${params.donorId}`,
+      `http://localhost:5000/api/user/${params.donorId}`,
       {
         cache: "no-store",
       }
     );
-    // console.log({ res });
     const response = await res.json();
+    console.log({ response });
     const donor = response.data;
-    // console.log(donor);
+    console.log(donor);
 
     return (
       <div className="m-4">

@@ -1,7 +1,26 @@
+"use client";
+import useUserInfo from "@/hooks/useUserInfo";
+import { logoutUser } from "@/services/actions/logoutUser";
 import { Donor } from "@/types";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 const DonorFullDetails = ({ donor }: { donor: Donor }) => {
+  const { userInfo, setUserInfo } = useUserInfo();
+  const router = useRouter();
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  const handleLogOut = () => {
+    logoutUser(router);
+    setUserInfo("");
+    router.push("/");
+  };
+
   const availabilityStatus = donor?.availability
     ? "Available"
     : "Not Available";
@@ -34,11 +53,15 @@ const DonorFullDetails = ({ donor }: { donor: Donor }) => {
           </p>
 
           <div className="card-actions justify-end">
-            <Link href="/donors/${blog.id}">
-              <button className="btn text-white bg-red-700 font-bold mt-5 text-left btn-sm">
-                Request For Blood
-              </button>
-            </Link>
+            {isClient && userInfo?.email ? (
+              <Link
+                href={`/dashboard/requester/create-request?donorId=${donor.id}`}
+              >
+                <button className="btn text-white bg-red-700 font-bold mt-5 text-left btn-sm">
+                  Request For Blood
+                </button>
+              </Link>
+            ) : null}
           </div>
         </div>
       </div>

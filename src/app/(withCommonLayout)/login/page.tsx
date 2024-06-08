@@ -17,11 +17,12 @@ export const validationSchema = z.object({
   password: z.string().min(6, "Must be at least 6 characters"),
 });
 
+type ValidationSchema = z.infer<typeof validationSchema>;
 const LoginPage = () => {
   const router = useRouter();
   const [error, setError] = useState("");
 
-  const methods = useForm({
+  const methods = useForm<ValidationSchema>({
     resolver: zodResolver(validationSchema),
     defaultValues: {
       email: "",
