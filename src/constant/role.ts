@@ -3,3 +3,7 @@ export const UserRole = {
   donor: "donor",
   requester: "requester",
 };
+export const Status = {
+  active: "active",
+  deactive: "deactive",
+};

@@ -29,14 +29,17 @@ const DBForm = ({
 
   if (defaultValues) {
     formConfig["defaultValues"] = defaultValues;
+    console.log(formConfig.defaultValues);
   }
+
+  console.log(defaultValues);
 
   const methods = useForm(formConfig);
   const { handleSubmit, reset } = methods;
 
-  const submit: SubmitHandler<FieldValues> = async (data) => {
+  const submit: SubmitHandler<FieldValues> = (data) => {
     // console.log(data);
-    await onSubmit(data);
+    onSubmit(data);
     reset();
   };
 

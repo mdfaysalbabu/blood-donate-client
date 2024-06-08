@@ -4,7 +4,7 @@ import React from "react";
 interface Column {
   header: string;
   accessor: string;
-  render?: (value: any) => React.ReactNode; // Add this for custom render logic
+  render?: (value: any) => React.ReactNode;
 }
 
 interface TableProps {

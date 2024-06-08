@@ -1,4 +1,4 @@
-import { UserRole } from "@/constant/role";
+import { Status, UserRole } from "@/constant/role";
 
 export type IMeta = {
   page: number;
@@ -23,3 +23,4 @@ export type IGenericErrorMessage = {
 };
 
 export type UserRole = keyof typeof UserRole;
+export type Status = keyof typeof Status;

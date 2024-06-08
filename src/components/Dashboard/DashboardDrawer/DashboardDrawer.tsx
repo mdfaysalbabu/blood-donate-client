@@ -29,7 +29,7 @@ const DashboardDrawer = ({ children }: { children: ReactNode }) => {
           aria-label="close sidebar"
           className="drawer-overlay"
         ></label>
-        <ul className="menu p-4 w-64 min-h-full bg-pink-100 text-base-content">
+        <ul className="menu p-4 w-64 min-h-full  bg-pink-200 text-pink-700 font-bold shadow-xl shadow-slate-950">
           {userRole && (
             <>
               <li>

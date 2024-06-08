@@ -3,7 +3,11 @@
 
 import DBTable from "@/components/Dashboard/DBTable/DBTable";
 import LoadingButton from "@/components/UI/Button/LoadingButton";
-import { useGetAllUsersQuery } from "@/redux/api/adminApi";
+import {
+  useGetAllUsersQuery,
+  useUpdateUserMutation,
+} from "@/redux/api/adminApi";
+import { Status, UserRole } from "@/types/common";
 
 /* eslint-disable react/no-unescaped-entities */
 
@@ -24,13 +28,55 @@ const columns = [
 
 const AdminPage = () => {
   const { data: users, isLoading } = useGetAllUsersQuery({});
+  const [updateUser] = useUpdateUserMutation({});
+  const updateStatus = (id: string, status: Status) => {
+    updateUser({
+      id,
+      body: {
+        status,
+      },
+    });
+  };
+
+  const updateUserRole = (id: string, role: UserRole) => {
+    updateUser({
+      id,
+      body: {
+        role,
+      },
+    });
+  };
+  const newData = users?.map((user: any) => {
+    return {
+      ...user,
+      status: (
+        <select
+          defaultValue={user.status}
+          onChange={(e) => updateStatus(user.id, e.target.value as any)}
+        >
+          <option value="active">Active</option>
+          <option value="deactive">Deactive</option>
+        </select>
+      ),
+      role: (
+        <select
+          value={user.role}
+          onChange={(e) => updateUserRole(user.id, e.target.value as UserRole)}
+        >
+          <option value="donor">Donor</option>
+          <option value="admin">Admin</option>
+          <option value="requester">Request</option>
+        </select>
+      ),
+    };
+  });
   console.log(users);
   return (
     <div className="container mx-auto p-8">
       {isLoading ? (
         <LoadingButton />
       ) : (
-        <DBTable columns={columns} data={users} />
+        <DBTable columns={columns} data={newData} />
       )}
     </div>
   );

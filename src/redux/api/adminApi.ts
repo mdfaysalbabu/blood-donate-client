@@ -25,7 +25,7 @@ export const userApi = baseApi.injectEndpoints({
       query: (data) => {
         console.log(data);
         return {
-          url: `/user/${data.id}`,
+          url: `/manage-user/${data.id}`,
           method: "PATCH",
           data: data.body,
         };

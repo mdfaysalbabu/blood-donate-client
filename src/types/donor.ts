@@ -28,3 +28,13 @@ export interface DonorId {
     donorId: string;
   };
 }
+export interface User {
+  id?: string;
+  phone?: string;
+  location?: string;
+  bio?: string;
+  age?: number;
+  lastDonationDate: string;
+  createdAt?: string;
+  updatedAt?: string;
+}

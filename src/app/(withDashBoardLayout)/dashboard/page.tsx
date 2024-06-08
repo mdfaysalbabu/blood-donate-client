@@ -1,12 +1,19 @@
 "use client";
 
 import userImg from "@/assets/perosn1.jpg";
+import ProfileUpdateModal from "@/components/ProfileUpdateModal/ProfileUpdateModal";
 import { useGetMYProfileQuery } from "@/redux/api/userApi";
 import Image from "next/image";
+import { useState } from "react";
 
 const MyProfile = () => {
   const { data, isLoading } = useGetMYProfileQuery("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
+  const handleUpdateProfileClick = () => {
+    setIsModalOpen(true);
+  };
+  console.log(isLoading);
   return (
     <div className="w-full bg-red-100 min-h-full">
       <div className="w-full bg-pink-500 p-6 shadow-xl shadow-rose-200 rounded-none mx-auto">
@@ -63,10 +70,25 @@ const MyProfile = () => {
           {data?.userProfile?.lastDonationDate}
         </p>
       </div>
-      <div>
-        <button className="btn bg-pink-500 p-3 w-full my-6 font-bold text-white">
-          Upadte Profile
-        </button>
+      <div
+        className="btn bg-pink-500 p-3 w-full my-6 font-bold text-white"
+        onClick={handleUpdateProfileClick}
+      >
+        {isModalOpen && (
+          <ProfileUpdateModal
+            setOpen={setIsModalOpen}
+            id="updateProfileModal"
+            title="Update Profile"
+            showModalButtonLabel="Update Profile"
+            defaultValues={{
+              phone: data?.phone,
+              location: data?.location,
+              bio: data?.userProfile?.bio,
+              age: data?.userProfile?.age,
+              lastDonationDate: data?.userProfile?.lastDonationDate,
+            }}
+          />
+        )}
       </div>
     </div>
   );
