@@ -20,6 +20,15 @@ export const userApi = baseApi.injectEndpoints({
       },
       providesTags: [tagTypes.user],
     }),
+    getAllRequest: build.query({
+      query: () => {
+        return {
+          url: "/donation-request",
+          method: "GET",
+        };
+      },
+      providesTags: [tagTypes.requester],
+    }),
     updateMYProfile: build.mutation({
       query: (data) => {
         return {
@@ -37,4 +46,5 @@ export const {
   useGetMYProfileQuery,
   useUpdateMYProfileMutation,
   useCreateRequestMutation,
+  useGetAllRequestQuery,
 } = userApi;

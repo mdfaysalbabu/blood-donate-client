@@ -16,7 +16,7 @@ import { FieldValues } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
 
-export const userValidationSchema = z
+const userValidationSchema = z
   .object({
     name: z.string().min(1, "Please enter your name!"),
     email: z.string().email("Please enter a valid email address!"),
@@ -43,7 +43,7 @@ export const userValidationSchema = z
     message: "Passwords must match",
   });
 
-export const defaultValues = {
+const defaultValues = {
   name: "",
   email: "",
   phone: "",

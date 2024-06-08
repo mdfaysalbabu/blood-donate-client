@@ -4,7 +4,7 @@ import { tagTypes } from "../tagTypes";
 import { baseApi } from "./baseApi";
 
 export const donorApi = baseApi.injectEndpoints({
-  endpoints: (build) => ({
+  endpoints: (build: any) => ({
     getAllDonors: build.query({
       query: (arg: Record<string, any>) => ({
         url: "/donors",
@@ -32,11 +32,22 @@ export const donorApi = baseApi.injectEndpoints({
     }),
     // update a donor
     updateDonor: build.mutation({
-      query: (data) => {
+      query: (data: any) => {
         // console.log(data);
         return {
           url: `/donor/${data.id}`,
           method: "PATCH",
+          data: data.body,
+        };
+      },
+      invalidatesTags: [tagTypes.donors, tagTypes.requester],
+    }),
+    updateRequestStatus: build.mutation({
+      query: (data: any) => {
+        console.log(data);
+        return {
+          url: `/donation-request/${data.id}`,
+          method: "PUT",
           data: data.body,
         };
       },
@@ -49,4 +60,5 @@ export const {
   useGetAllDonorsQuery,
   useGetDonorQuery,
   useUpdateDonorMutation,
+  useUpdateRequestStatusMutation,
 } = donorApi;

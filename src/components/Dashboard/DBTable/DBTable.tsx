@@ -38,14 +38,6 @@ const DBTable: React.FC<TableProps> = ({ columns, data }) => {
             </tr>
           ))}
         </tbody>
-        <tfoot>
-          <tr>
-            <th></th>
-            {columns?.map((column) => (
-              <th key={column.accessor}>{column.header}</th>
-            ))}
-          </tr>
-        </tfoot>
       </table>
     </div>
   );
