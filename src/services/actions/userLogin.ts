@@ -5,7 +5,7 @@ import setAccessToken from "./setAccessToken";
 
 export const userLogin = async (data: FieldValues) => {
   const res = await fetch(
-    "https://blood-donation-app-server-two.vercel.app/api/auth/login",
+    "https://blood-donation-app-server-iota.vercel.app/api/auth/login",
     {
       method: "POST",
       headers: {

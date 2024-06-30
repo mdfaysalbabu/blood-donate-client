@@ -4,7 +4,7 @@ import { FieldValues } from "react-hook-form";
 
 export const registerUser = async (data: FieldValues) => {
   const res = await fetch(
-    "https://blood-donation-app-server-two.vercel.app/api/register",
+    "https://blood-donation-app-server-iota.vercel.app/api/register",
     {
       method: "POST",
       headers: {

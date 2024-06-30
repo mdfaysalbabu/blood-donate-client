@@ -1,12 +1,14 @@
 "use client";
 
 import { Donor } from "@/types";
+import L from "leaflet";
 import markerIcon2x from "leaflet/dist/images/marker-icon-2x.png";
 import markerIcon from "leaflet/dist/images/marker-icon.png";
 import markerShadow from "leaflet/dist/images/marker-shadow.png";
 import "leaflet/dist/leaflet.css";
 import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
+import { FaMapMarkerAlt, FaRegEye } from "react-icons/fa"; // New icons for markers and view
 
 const geocode = async (location: string) => {
   try {
@@ -42,7 +44,7 @@ const TileLayer = dynamic(
   { ssr: false }
 );
 
-const CovarageArea = () => {
+const CoverageArea = () => {
   const [donors, setDonors] = useState<Donor[]>([]);
   const [isExpanded, setIsExpanded] = useState(false);
   const [locations, setLocations] = useState<{
@@ -54,7 +56,7 @@ const CovarageArea = () => {
     const fetchDonors = async () => {
       try {
         const res = await fetch(
-          "https://blood-donation-app-server-two.vercel.app/api/donors?limit=1000",
+          "https://blood-donation-app-server-iota.vercel.app/api/donors?limit=1000",
           {
             cache: "no-store",
           }
@@ -132,7 +134,7 @@ const CovarageArea = () => {
     <div>
       <div className="my-12 text-center divider divider-error">
         <h1 className="text-2xl font-bold border-2 border-red-700 text-red-700 p-3 inline-block bg-white bg-opacity-75">
-          Our Coverage Areas!
+          Our Coverage Areas
         </h1>
       </div>
 
@@ -183,12 +185,21 @@ const CovarageArea = () => {
             />
             {donors?.map((donor) => {
               const location = locations[donor.id];
-              // console.log(donor);
               if (location) {
                 return (
                   <Marker
                     key={donor.id}
                     position={[location.lat, location.lon]}
+                    icon={L.icon({
+                      iconUrl: markerIcon.src,
+                      iconRetinaUrl: markerIcon2x.src,
+                      shadowUrl: markerShadow.src,
+                      iconSize: [25, 41],
+                      iconAnchor: [12, 41],
+                      popupAnchor: [1, -34],
+                      tooltipAnchor: [16, -28],
+                      shadowSize: [41, 41],
+                    })}
                   >
                     <Popup>
                       <div>
@@ -199,6 +210,12 @@ const CovarageArea = () => {
                           Availability:{" "}
                           {donor.availability ? "Available" : "Not Available"}
                         </p>
+                        <div className="flex items-center mt-2">
+                          <FaMapMarkerAlt className="text-red-600 mr-2" />
+                          <span className="text-gray-700">
+                            Click to view details
+                          </span>
+                        </div>
                       </div>
                     </Popup>
                   </Marker>
@@ -213,4 +230,4 @@ const CovarageArea = () => {
   );
 };
 
-export default CovarageArea;
+export default CoverageArea;

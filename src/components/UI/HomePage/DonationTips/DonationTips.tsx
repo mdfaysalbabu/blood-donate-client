@@ -1,4 +1,8 @@
-/* eslint-disable react/no-unescaped-entities */
+'use client'
+import { useEffect } from "react";
+import { motion } from "framer-motion";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import {
   FaArrowRight,
   FaBed,
@@ -7,71 +11,120 @@ import {
   FaHeartbeat,
   FaStar,
 } from "react-icons/fa";
+import bgImage from "@/assets/bg.jpg"; 
 
 const DonationTips = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000, 
+    });
+  }, []);
+
   return (
-    <div className="mt-6">
-      <div className="my-12 text-center divider divider-error">
-        <h1 className="text-2xl font-bold border-2 border-red-700 text-red-700 p-3 inline-block bg-white bg-opacity-75">
-          Donation Tips
-        </h1>
-      </div>
-      <div className=" bg-pink-100 p-6">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mx-auto max-w-6xl">
-          <div className="flex flex-col items-center">
-            <div className="text-4xl text-red-700 mb-2">
+    <div
+      className="bg-cover bg-center py-12"
+      style={{ backgroundImage: `url(${bgImage.src})` }}
+    >
+      <div className="max-w-7xl mx-auto px-4">
+        <div className="text-center mb-12">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-red-700 mb-4">
+            Donation Tips & Guidelines
+          </h1>
+          <p className="text-lg text-gray-600">
+            Discover essential tips to make your blood donation experience
+            positive and impactful.
+          </p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <motion.div
+            className="flex flex-col items-center bg-white bg-opacity-75 rounded-lg shadow-lg p-6"
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 0.5 }}
+            data-aos="fade-up"
+          >
+            <div className="text-5xl text-purple-600 mb-4">
               <FaHandsHelping />
             </div>
-            <p className="text-lg">
-              Encourage friends, family, and colleagues to donate blood
-              together.
+            <p className="text-lg text-gray-800">
+              Organize group donations with friends and family to maximize
+              impact.
             </p>
-          </div>
-          <div className="flex flex-col items-center">
-            <div className="text-4xl text-red-700 mb-2">
+          </motion.div>
+          <motion.div
+            className="flex flex-col items-center bg-white bg-opacity-75 rounded-lg shadow-lg p-6"
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            data-aos="fade-up"
+          >
+            <div className="text-5xl text-purple-600 mb-4">
               <FaHandHoldingHeart />
             </div>
-            <p className="text-lg">
-              Educate yourself about blood donation and its impact on saving
+            <p className="text-lg text-gray-800">
+              Learn about the importance of blood donation and how it saves
               lives.
             </p>
-          </div>
-          <div className="flex flex-col items-center">
-            <div className="text-4xl text-red-700 mb-2">
+          </motion.div>
+          <motion.div
+            className="flex flex-col items-center bg-white bg-opacity-75 rounded-lg shadow-lg p-6"
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            data-aos="fade-up"
+          >
+            <div className="text-5xl text-purple-600 mb-4">
               <FaArrowRight />
             </div>
-            <p className="text-lg">
-              Follow a healthy lifestyle by eating nutritious food and staying
-              hydrated before donating blood.
+            <p className="text-lg text-gray-800">
+              Maintain a healthy lifestyle by eating nutritious food and staying
+              hydrated.
             </p>
-          </div>
-          <div className="flex flex-col items-center">
-            <div className="text-4xl text-red-700 mb-2">
+          </motion.div>
+          <motion.div
+            className="flex flex-col items-center bg-white bg-opacity-75 rounded-lg shadow-lg p-6"
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            data-aos="fade-up"
+          >
+            <div className="text-5xl text-purple-600 mb-4">
               <FaBed />
             </div>
-            <p className="text-lg">
-              Rest and relax after donating blood to replenish fluids and
-              prevent any adverse reactions.
+            <p className="text-lg text-gray-800">
+              Rest and relax after donating blood to ensure a smooth recovery.
             </p>
-          </div>
-          <div className="flex flex-col items-center">
-            <div className="text-4xl text-red-700 mb-2">
+          </motion.div>
+          <motion.div
+            className="flex flex-col items-center bg-white bg-opacity-75 rounded-lg shadow-lg p-6"
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            data-aos="fade-up"
+          >
+            <div className="text-5xl text-purple-600 mb-4">
               <FaHeartbeat />
             </div>
-            <p className="text-lg">
-              Spread awareness about the importance of blood donation in your
-              community and encourage others to donate.
+            <p className="text-lg text-gray-800">
+              Raise awareness about blood donation in your community to inspire
+              others.
             </p>
-          </div>
-          <div className="flex flex-col items-center">
-            <div className="text-4xl text-red-700 mb-2">
+          </motion.div>
+          <motion.div
+            className="flex flex-col items-center bg-white bg-opacity-75 rounded-lg shadow-lg p-6"
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+            data-aos="fade-up"
+          >
+            <div className="text-5xl text-purple-600 mb-4">
               <FaStar />
             </div>
-            <p className="text-lg">
-              Volunteer at blood drives or local blood banks to support donation
-              efforts and make a difference in the lives of others.
+            <p className="text-lg text-gray-800">
+              Volunteer at blood drives to support donation efforts and make a
+              meaningful impact.
             </p>
-          </div>
+          </motion.div>
         </div>
       </div>
     </div>

@@ -15,11 +15,11 @@ const SearchDonar = async () => {
 
   return (
     <div className="flex flex-col items-center">
-      <div className="bg-pink-100 mt-6 px-24 rounded-lg shadow-lg">
-        <h1 className="text-4xl md:text-4xl lg:text-4xl font-semibold my-6 text-red-600 text-center">
+      <div className="bg-gradient-to-r from-red-600 to-indigo-600 mt-6 px-10 py-8 rounded-lg shadow-lg text-white text-center">
+        <h1 className="text-4xl md:text-4xl lg:text-4xl font-semibold my-6">
           Search Donor Here!
         </h1>
-        <SearchButton></SearchButton>
+        <SearchButton />
       </div>
       <div className="my-12 text-center divider divider-error">
         <h1 className="text-2xl font-bold border-2 border-red-700 text-red-700 p-3 inline-block bg-white bg-opacity-75">

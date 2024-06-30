@@ -1,66 +1,96 @@
 import Image from "next/image";
+import {
+  FaFacebookF,
+  FaTwitter,
+  FaLinkedinIn,
+  FaEnvelope,
+} from "react-icons/fa";
 
 import bgImage from "@/assets/BloodDrop.png";
-import member1Photo from "@/assets/perosn1.jpg";
-import member2Photo from "@/assets/perosn2.jpg";
-import member3Photo from "@/assets/perosn3.jpg";
+import member1Photo from "@/assets/person1.jpg";
+import member2Photo from "@/assets/person2.jpg";
+import member3Photo from "@/assets/person3.jpg";
 
 const TeamInformation = () => {
   const teamMembers = [
     {
-      name: "John Doe",
-      position: "Blood Donation Advocate",
+      name: "Alex Johnson",
+      position: "Lead Blood Donation Advocate",
+      email: "alex.johnson@example.com",
       photo: member1Photo,
     },
     {
-      name: "Jane Smith",
-      position: "Community Engagement Manager",
+      name: "Samantha Carter",
+      position: "Community Engagement Director",
+      email: "samantha.carter@example.com",
       photo: member2Photo,
     },
     {
-      name: "Michael Johnson",
-      position: "Donor Outreach Coordinator",
+      name: "Ryan Matthews",
+      position: "Outreach Coordinator",
+      email: "ryan.matthews@example.com",
       photo: member3Photo,
     },
-    { name: "Emily Davis", position: "Graphic Designer", photo: member3Photo },
+    {
+      name: "Emily Davis",
+      position: "Creative Graphic Designer",
+      email: "emily.davis@example.com",
+      photo: member3Photo,
+    },
     {
       name: "David Brown",
       position: "Volunteer Coordinator",
+      email: "david.brown@example.com",
       photo: member1Photo,
     },
     {
-      name: "Sarah Wilson",
+      name: "Laura Wilson",
       position: "Support Services Specialist",
+      email: "laura.wilson@example.com",
       photo: member2Photo,
     },
   ];
 
   return (
-    <div
-      className="relative py-4 bg-cover bg-center"
-      style={{ backgroundImage: `url(${bgImage.src})` }}
-    >
-      <div className="absolute inset-0 bg-white bg-opacity-90"></div>
-      <div className="relative z-10">
-        <div className="my-12 text-center divider divider-error">
-          <h1 className="text-2xl font-bold border-2 border-red-700 text-red-700 p-3 inline-block bg-white bg-opacity-75">
-            Meet Our Team
+    <div className="bg-gradient-to-br from-red-800 to-indigo-900">
+      <div className="max-w-7xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
+        <div className="divider my-12">
+          <h1 className="text-3xl font-extrabold border-2 text-green-500 border-white p-4">
+            Our Core Values
           </h1>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
           {teamMembers.map((member, index) => (
-            <div key={index} className="flex flex-col items-center">
-              <div className="w-32 h-32 rounded-full overflow-hidden relative">
+            <div
+              key={index}
+              className="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col items-center text-center transition-transform hover:scale-105"
+            >
+              <div className="relative w-32 h-32">
                 <Image
                   src={member.photo}
                   alt={member.name}
                   layout="fill"
                   objectFit="cover"
-                  className="rounded-full"
+                  className="rounded-t-lg"
                 />
               </div>
-              <h3 className="text-lg font-semibold mt-2">{member.name}</h3>
-              <p className="text-sm text-gray-600">{member.position}</p>
+              <div className="p-6">
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                  {member.name}
+                </h3>
+                <p className="text-lg text-gray-700 mb-4">{member.position}</p>
+                <div className="flex justify-center space-x-4">
+                  <a
+                    href={`mailto:${member.email}`}
+                    className="text-indigo-600 hover:text-indigo-800"
+                  >
+                    <FaEnvelope className="text-xl" />
+                  </a>
+                  <FaFacebookF className="text-2xl text-indigo-600 hover:text-indigo-800" />
+                  <FaTwitter className="text-2xl text-indigo-600 hover:text-indigo-800" />
+                  <FaLinkedinIn className="text-2xl text-indigo-600 hover:text-indigo-800" />
+                </div>
+              </div>
             </div>
           ))}
         </div>

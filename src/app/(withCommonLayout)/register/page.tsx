@@ -1,5 +1,5 @@
 "use client";
-
+import { FaUser, FaEnvelope, FaPhone, FaMapMarkerAlt, FaInfoCircle, FaBirthdayCake, FaHandHoldingHeart, FaTint, FaLock, FaLockOpen, FaClock } from "react-icons/fa";
 import DBDatePicker from "@/components/Forms/DBDatePicker";
 import DBForm from "@/components/Forms/DBForm";
 import DBInput from "@/components/Forms/DBInput";
@@ -95,143 +95,154 @@ const RegisterPage = () => {
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-pink-100 p-8">
-      <div className="max-w-2xl w-full bg-white shadow-md rounded-md p-8 text-center">
-        <h1 className="text-3xl font-semibold text-red-700 bg-white mb-4">
-          Register To Donate Blood
-        </h1>
-        {error && (
-          <div className="bg-red-500 text-white p-2 rounded mb-4">{error}</div>
-        )}
+    <div className="max-w-2xl w-full bg-white shadow-lg rounded-lg p-8 text-center">
+      <h1 className="text-3xl font-semibold text-teal-700 mb-6">
+        Register To Donate Blood
+      </h1>
+      {error && (
+        <div className="bg-red-500 text-white p-2 rounded mb-4">{error}</div>
+      )}
 
-        <DBForm
-          onSubmit={handleRegister}
-          resolver={zodResolver(userValidationSchema)}
-          defaultValues={defaultValues}
-        >
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
-            <div>
-              <DBInput
-                name="name"
-                label="Name"
-                type="text"
-                fullWidth={true}
-                className="input input-bordered w-full"
-              />
-            </div>
-            <div>
-              <DBInput
-                name="email"
-                label="Email"
-                type="email"
-                fullWidth={true}
-                className="input input-bordered w-full"
-              />
-            </div>
-            <div>
-              <DBInput
-                name="phone"
-                label="Phone"
-                type="text"
-                fullWidth={true}
-                className="input input-bordered w-full"
-              />
-            </div>
-            <div>
-              <DBInput
-                name="location"
-                label="Location"
-                type="text"
-                fullWidth={true}
-                className="input input-bordered w-full"
-              />
-            </div>
-            <div>
-              <DBInput
-                name="bio"
-                label="Bio"
-                type="text"
-                fullWidth={true}
-                className="input input-bordered w-full"
-              />
-            </div>
-            <div>
-              <DBInput
-                name="age"
-                label="Age"
-                type="number"
-                fullWidth={true}
-                className="input input-bordered w-full"
-              />
-            </div>
-            <div>
-              <DBSelectField
-                items={["Yes", "No"]}
-                name="isDonateBlood"
-                label="Want To Donate Blood?"
-              />
-            </div>
-            <div>
-              <DBSelectField
-                items={[
-                  "A Positive",
-                  "A Negative",
-                  "B Positive",
-                  "B Negative",
-                  "AB Positive",
-                  "AB Negative",
-                  "O Positive",
-                  "O Negative",
-                ]}
-                name="bloodType"
-                label="Select Your Blood Type"
-              />
-            </div>
-            <div>
-              <DBDatePicker
-                name="lastDonationDate"
-                label="Last Donation Date"
-                className="input"
-              />
-            </div>
-            <div>
-              <DBInput
-                name="password"
-                label="Password"
-                type="password"
-                fullWidth={true}
-                className="input input-bordered w-full"
-              />
-            </div>
-            <div>
-              <DBInput
-                name="confirmPassword"
-                label="Confirm Password"
-                type="password"
-                fullWidth={true}
-                className="input input-bordered w-full"
-              />
-            </div>
+      <DBForm
+        onSubmit={handleRegister}
+        resolver={zodResolver(userValidationSchema)}
+        defaultValues={defaultValues}
+      >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+          <div className="flex items-center gap-2">
+            <FaUser className="text-teal-700" />
+            <DBInput
+              name="name"
+              label="Name"
+              type="text"
+              fullWidth={true}
+              className="input input-bordered w-full"
+            />
           </div>
-          <p className="text-right mb-4 text-sm">
-            <Link href="/change-password" className="link text-pink-500">
-              Want to change password?
-            </Link>
-          </p>
-          <button
-            type="submit"
-            className="btn bg-red-700 w-full mb-4 text-white font-bold"
-          >
-            Register
-          </button>
-          <p className="text-sm">
-            Don&apos;t have an account?{" "}
-            <Link href="/login" className="link text-pink-500">
-              Create an account
-            </Link>
-          </p>
-        </DBForm>
-      </div>
+          <div className="flex items-center gap-2">
+            <FaEnvelope className="text-teal-700" />
+            <DBInput
+              name="email"
+              label="Email"
+              type="email"
+              fullWidth={true}
+              className="input input-bordered w-full"
+            />
+          </div>
+          <div className="flex items-center gap-2">
+            <FaPhone className="text-teal-700" />
+            <DBInput
+              name="phone"
+              label="Phone"
+              type="text"
+              fullWidth={true}
+              className="input input-bordered w-full"
+            />
+          </div>
+          <div className="flex items-center gap-2">
+            <FaMapMarkerAlt className="text-teal-700" />
+            <DBInput
+              name="location"
+              label="Location"
+              type="text"
+              fullWidth={true}
+              className="input input-bordered w-full"
+            />
+          </div>
+          <div className="flex items-center gap-2">
+            <FaInfoCircle className="text-teal-700" />
+            <DBInput
+              name="bio"
+              label="Bio"
+              type="text"
+              fullWidth={true}
+              className="input input-bordered w-full"
+            />
+          </div>
+          <div className="flex items-center gap-2">
+            <FaBirthdayCake className="text-teal-700" />
+            <DBInput
+              name="age"
+              label="Age"
+              type="number"
+              fullWidth={true}
+              className="input input-bordered w-full"
+            />
+          </div>
+          <div className="flex items-center gap-2">
+            <FaHandHoldingHeart className="text-teal-700" />
+            <DBSelectField
+              items={["Yes", "No"]}
+              name="isDonateBlood"
+              label="Want To Donate Blood?"
+            />
+          </div>
+          <div className="flex items-center gap-2">
+            <FaTint className="text-teal-700" />
+            <DBSelectField
+              items={[
+                "A Positive",
+                "A Negative",
+                "B Positive",
+                "B Negative",
+                "AB Positive",
+                "AB Negative",
+                "O Positive",
+                "O Negative",
+              ]}
+              name="bloodType"
+              label="Select Your Blood Type"
+            />
+          </div>
+          <div className="flex items-center gap-2">
+            <FaClock className="text-teal-700" />
+            <DBDatePicker
+              name="lastDonationDate"
+              label="Last Donation Date"
+              className="input input-bordered w-full"
+            />
+          </div>
+          <div className="flex items-center gap-2">
+            <FaLock className="text-teal-700" />
+            <DBInput
+              name="password"
+              label="Password"
+              type="password"
+              fullWidth={true}
+              className="input input-bordered w-full"
+            />
+          </div>
+          <div className="flex items-center gap-2">
+            <FaLockOpen className="text-teal-700" />
+            <DBInput
+              name="confirmPassword"
+              label="Confirm Password"
+              type="password"
+              fullWidth={true}
+              className="input input-bordered w-full"
+            />
+          </div>
+        </div>
+        <p className="text-right mb-4 text-sm">
+          <Link href="/change-password" className="link text-teal-500">
+            Want to change password?
+          </Link>
+        </p>
+        <button
+          type="submit"
+          className="btn bg-teal-700 w-full mb-4 text-white font-bold"
+        >
+          Register
+        </button>
+        <p className="text-sm">
+           have an account?{" "}
+          <Link href="/login" className="link text-teal-500">
+            Login
+          </Link>
+        </p>
+      </DBForm>
     </div>
+  </div>
   );
 };
 

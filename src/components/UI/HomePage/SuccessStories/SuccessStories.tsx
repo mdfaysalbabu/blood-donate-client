@@ -1,8 +1,11 @@
-import member1Photo from "@/assets/perosn1.jpg";
-import member2Photo from "@/assets/perosn2.jpg";
-import member3Photo from "@/assets/perosn3.jpg";
+'use client'
+import { useEffect } from "react";
 import Image from "next/image";
-import { FaStar } from "react-icons/fa";
+import { FaStar, FaQuoteLeft } from "react-icons/fa";
+import member1Photo from "@/assets/person1.jpg";
+import member2Photo from "@/assets/person2.jpg";
+import member3Photo from "@/assets/person3.jpg";
+import { motion } from "framer-motion";
 
 const SuccessStories = () => {
   const stories = [
@@ -56,32 +59,54 @@ const SuccessStories = () => {
     },
   ];
 
+  useEffect(() => {
+    // Initialize animations or effects here (e.g., using libraries like AOS)
+    const AOS = require("aos");
+    AOS.init({ once: true }); // Example: initialize AOS with options
+  }, []);
+
+  const quoteVariants = {
+    hidden: { opacity: 0, rotate: -10, scale: 0.8 },
+    visible: {
+      opacity: 1,
+      rotate: 0,
+      scale: 1,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut",
+      },
+    },
+  };
+
   return (
-    <div className="relative py-6 px-8 bg-cover bg-center ">
+    <div className="relative py-6 px-8 bg-cover bg-center">
       <div className="absolute inset-0 bg-white bg-opacity-90"></div>
       <div className="relative z-10">
-        <div className="my-12 text-center divider divider-error">
-          <h1 className="text-2xl font-bold border-2 border-red-700 text-red-700 p-3 inline-block bg-white bg-opacity-75">
-            Some of Our Success Stories
+        <div className="my-12 text-center">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-green-600 mb-4">
+            Success Stories
           </h1>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-8">
           {stories.map((story, index) => (
-            <div
+            <motion.div
               key={index}
-              className="p-6 rounded-lg bg-red-700 text-white shadow-xl"
+              initial="hidden"
+              animate="visible"
+              variants={quoteVariants}
+              className="p-6 rounded-lg bg-gradient-to-r from-red-800 to-red-900 text-white shadow-xl"
+              data-aos="fade-up"
             >
-              <div className=" grid grid-cols-1 md:grid-cols-2 items-center">
+              <div className="grid grid-cols-1 md:grid-cols-2 items-center">
                 <div className="flex flex-col items-center">
-                  <div className="avatar mb-2">
-                    <div className="w-16 h-16 rounded-full overflow-hidden">
-                      <Image
-                        src={story.avatar}
-                        alt={story.name}
-                        width={64}
-                        height={64}
-                      />
-                    </div>
+                  <div className="w-16 h-16 rounded-full overflow-hidden mb-4">
+                    <Image
+                      src={story.avatar}
+                      alt={story.name}
+                      width={64}
+                      height={64}
+                      className="rounded-full"
+                    />
                   </div>
                   <div className="text-center">
                     <h2 className="text-xl font-bold">{story.name}</h2>
@@ -89,8 +114,8 @@ const SuccessStories = () => {
                     <p className="text-sm">{story.address}</p>
                   </div>
                 </div>
-                <div className="text-center md:text-left">
-                  <p className="mb-4">{story.story}</p>
+                <div className="text-center md:text-left mt-4 md:mt-0">
+                  <p className="mb-4 text-lg">{story.story}</p>
                   <div className="flex justify-center md:justify-start">
                     <FaStar className="text-yellow-400" />
                     <FaStar className="text-yellow-400" />
@@ -100,7 +125,15 @@ const SuccessStories = () => {
                   </div>
                 </div>
               </div>
-            </div>
+              <motion.div
+                className="text-4xl absolute top-0 left-0 text-white opacity-50 transform -rotate-10 -translate-x-3 translate-y-3"
+                variants={quoteVariants}
+                initial="hidden"
+                animate="visible"
+              >
+                <FaQuoteLeft />
+              </motion.div>
+            </motion.div>
           ))}
         </div>
       </div>

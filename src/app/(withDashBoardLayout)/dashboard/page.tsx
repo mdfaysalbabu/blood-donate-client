@@ -1,23 +1,24 @@
-"use client";
+'use client';
 
-import userImg from "@/assets/perosn1.jpg";
-import ProfileUpdateModal from "@/components/ProfileUpdateModal/ProfileUpdateModal";
-import { useGetMYProfileQuery } from "@/redux/api/userApi";
-import Image from "next/image";
-import { useState } from "react";
+import userImg from '@/assets/person1.jpg';
+import ProfileUpdateModal from '@/components/ProfileUpdateModal/ProfileUpdateModal';
+import { useGetMYProfileQuery } from '@/redux/api/userApi';
+import Image from 'next/image';
+import { useState } from 'react';
+import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaHeart, FaClock } from 'react-icons/fa';
 
 const MyProfile = () => {
-  const { data, isLoading } = useGetMYProfileQuery("");
+  const { data, isLoading } = useGetMYProfileQuery('');
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleUpdateProfileClick = () => {
     setIsModalOpen(true);
   };
-  console.log(isLoading);
+
   return (
-    <div className="w-full bg-red-100 min-h-full">
-      <div className="w-full bg-pink-500 p-6 shadow-xl shadow-rose-200 rounded-none mx-auto">
-        <div className="relative rounded-md mx-auto w-32 h-32 flex justify-center items-center">
+    <div className="w-full bg-gray-100 min-h-screen py-6">
+      <div className="w-full bg-purple-600 p-6 shadow-xl shadow-blue-200 rounded-lg mx-auto">
+        <div className="relative rounded-full mx-auto w-32 h-32 flex justify-center items-center overflow-hidden">
           <Image
             src={userImg}
             alt="Profile Image"
@@ -30,66 +31,75 @@ const MyProfile = () => {
           {data?.name}
         </h2>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 text-pink-950 gap-6 p-6">
-        <p className="p-4 bg-white rounded-md">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 text-blue-900 gap-6 p-6">
+        <div className="p-4 bg-white rounded-md flex items-center shadow-md">
+          <FaEnvelope className="text-xl text-blue-600 mr-3" />
           <span className="font-semibold">Email:</span> {data?.email}
-        </p>
+        </div>
 
-        <p className="p-4 bg-white rounded-md">
+        <div className="p-4 bg-white rounded-md flex items-center shadow-md">
+          <FaPhone className="text-xl text-blue-600 mr-3" />
           <span className="font-semibold">Phone:</span> {data?.phone}
-        </p>
+        </div>
 
-        <p className="p-4 bg-white rounded-md">
+        <div className="p-4 bg-white rounded-md flex items-center shadow-md">
+          <FaHeart className="text-xl text-blue-600 mr-3" />
           <span className="font-semibold">Blood Type:</span> {data?.bloodType}
-        </p>
+        </div>
 
-        <p className="p-4 bg-white rounded-md">
+        <div className="p-4 bg-white rounded-md flex items-center shadow-md">
+          <FaMapMarkerAlt className="text-xl text-blue-600 mr-3" />
           <span className="font-semibold">Location:</span> {data?.location}
-        </p>
+        </div>
 
-        <p className="p-4 bg-white rounded-md">
-          <span className="font-semibold">Donate Blood:</span>{" "}
-          {data?.isDonateBlood ? "Yes" : "No"}
-        </p>
+        <div className="p-4 bg-white rounded-md flex items-center shadow-md">
+          <FaHeart className="text-xl text-blue-600 mr-3" />
+          <span className="font-semibold">Donate Blood:</span>{' '}
+          {data?.isDonateBlood ? 'Yes' : 'No'}
+        </div>
 
-        <p className="p-4 bg-white rounded-md">
-          <span className="font-semibold">Availability:</span>{" "}
-          {data?.availability ? "Available" : "Not Available"}
-        </p>
+        <div className="p-4 bg-white rounded-md flex items-center shadow-md">
+          <FaClock className="text-xl text-blue-600 mr-3" />
+          <span className="font-semibold">Availability:</span>{' '}
+          {data?.availability ? 'Available' : 'Not Available'}
+        </div>
 
-        <p className="p-4 bg-white rounded-md">
+        <div className="p-4 bg-white rounded-md shadow-md">
           <span className="font-semibold">Bio:</span> {data?.userProfile?.bio}
-        </p>
+        </div>
 
-        <p className="p-4 bg-white rounded-md">
+        <div className="p-4 bg-white rounded-md shadow-md">
           <span className="font-semibold">Age:</span> {data?.userProfile?.age}
-        </p>
+        </div>
 
-        <p className="p-4 bg-white rounded-md">
-          <span className="font-semibold">Last Donation Date:</span>{" "}
+        <div className="p-4 bg-white rounded-md shadow-md">
+          <span className="font-semibold">Last Donation Date:</span>{' '}
           {data?.userProfile?.lastDonationDate}
-        </p>
+        </div>
       </div>
-      <div
-        className="btn bg-pink-500 p-3 w-full my-6 font-bold text-white"
-        onClick={handleUpdateProfileClick}
-      >
-        {isModalOpen && (
-          <ProfileUpdateModal
-            setOpen={setIsModalOpen}
-            id="updateProfileModal"
-            title="Update Profile"
-            showModalButtonLabel="Update Profile"
-            defaultValues={{
-              phone: data?.phone,
-              location: data?.location,
-              bio: data?.userProfile?.bio,
-              age: data?.userProfile?.age,
-              lastDonationDate: data?.userProfile?.lastDonationDate,
-            }}
-          />
-        )}
+      <div className="flex justify-center mt-6">
+        <button
+          className="btn bg-blue-600 hover:bg-blue-500 p-3 px-6 rounded-lg font-bold text-white shadow-md"
+          onClick={handleUpdateProfileClick}
+        >
+          Update Profile
+        </button>
       </div>
+      {isModalOpen && (
+        <ProfileUpdateModal
+          setOpen={setIsModalOpen}
+          id="updateProfileModal"
+          title="Update Profile"
+          showModalButtonLabel="Update Profile"
+          defaultValues={{
+            phone: data?.phone,
+            location: data?.location,
+            bio: data?.userProfile?.bio,
+            age: data?.userProfile?.age,
+            lastDonationDate: data?.userProfile?.lastDonationDate,
+          }}
+        />
+      )}
     </div>
   );
 };
